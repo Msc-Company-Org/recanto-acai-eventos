@@ -2,7 +2,7 @@
 
 Landing page para serviços de carrinhos e buffets gourmet de açaí para eventos.
 
-**Live:** https://recanto-acai-eventos-lp.vercel.app
+**Production:** https://recanto-acai-eventos-lp.vercel.app
 
 ## Stack
 - HTML5 + CSS3 (vanilla)
@@ -12,9 +12,6 @@ Landing page para serviços de carrinhos e buffets gourmet de açaí para evento
 
 ## Deploy
 ```bash
-# Desenvolvimento local (qualquer static server)
-npx serve .
-
-# Deploy via Vercel CLI
-vercel --prod
+# Push para main = deploy produção automático
+git push origin master
 ```
