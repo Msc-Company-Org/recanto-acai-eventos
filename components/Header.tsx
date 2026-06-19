@@ -30,7 +30,7 @@ export function Header() {
             </a>
           ))}
         </nav>
-        <WhatsAppCTA message={waDefaultMessage} variant="primary" className="!px-5 !py-2.5 text-sm">
+        <WhatsAppCTA message={waDefaultMessage} variant="primary" cta="header" className="!px-5 !py-2.5 text-sm">
           <WhatsappIcon className="w-4 h-4" />
           <span className="hidden sm:inline">Falar conosco</span>
           <span className="sm:hidden">WhatsApp</span>

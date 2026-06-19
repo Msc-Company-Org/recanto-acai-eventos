@@ -17,7 +17,7 @@ export function Hero() {
           </h1>
           <p className="text-muted text-lg mt-6 max-w-xl mx-auto md:mx-0 leading-relaxed text-pretty">{hero.subtitle}</p>
           <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-8">
-            <WhatsAppCTA message={waDefaultMessage} variant="primary">
+            <WhatsAppCTA message={waDefaultMessage} variant="primary" cta="hero">
               <WhatsappIcon /> {hero.ctaPrimary}
             </WhatsAppCTA>
             <a

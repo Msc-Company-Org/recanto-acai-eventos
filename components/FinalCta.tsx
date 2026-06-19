@@ -11,7 +11,7 @@ export function FinalCta() {
           </h2>
           <p className="text-muted text-lg mt-4 max-w-xl mx-auto">{finalCta.subtitle}</p>
           <div className="mt-8 flex justify-center">
-            <WhatsAppCTA message={waDefaultMessage} variant="gold">
+            <WhatsAppCTA message={waDefaultMessage} variant="gold" cta="final">
               <WhatsappIcon /> {finalCta.cta}
             </WhatsAppCTA>
           </div>

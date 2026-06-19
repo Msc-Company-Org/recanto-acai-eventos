@@ -3,6 +3,8 @@ import { Fraunces, Outfit } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/content";
 import { Analytics } from "@/components/Analytics";
+import { TrackingListener } from "@/components/TrackingListener";
+import { JsonLd } from "@/components/JsonLd";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -71,7 +73,9 @@ export default function RootLayout({
           />
         </noscript>
         {children}
+        <JsonLd />
         <Analytics />
+        <TrackingListener />
       </body>
     </html>
   );

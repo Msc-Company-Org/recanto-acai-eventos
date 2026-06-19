@@ -45,23 +45,27 @@ const ctaVariants: Record<CTAVariant, string> = {
   gold: "bg-gold text-bg hover:bg-gold-soft hover:-translate-y-0.5 shadow-gold",
 };
 
-/** Botão/anchor que abre o WhatsApp com mensagem pré-preenchida. */
+/** Botão/anchor que abre o WhatsApp com mensagem pré-preenchida.
+ *  `cta` identifica a origem do clique no tracking (data-cta). */
 export function WhatsAppCTA({
   message,
   children,
   variant = "primary",
   className = "",
+  cta,
 }: {
   message: string;
   children: React.ReactNode;
   variant?: CTAVariant;
   className?: string;
+  cta?: string;
 }) {
   return (
     <a
       href={waLink(message)}
       target="_blank"
       rel="noopener noreferrer"
+      data-cta={cta}
       className={`${ctaBase} ${ctaVariants[variant]} ${className}`}
     >
       {children}

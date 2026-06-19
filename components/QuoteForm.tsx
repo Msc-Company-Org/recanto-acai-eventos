@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { packages, eventTypes } from "@/lib/content";
 import { brl, waLink } from "@/lib/utils";
+import { track, EVENTS } from "@/lib/tracking";
 import { WhatsappIcon } from "./primitives";
 
 type FormState = {
@@ -61,6 +62,13 @@ export function QuoteForm() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    // Conversão principal (Lead) — value/currency p/ otimização de campanha.
+    track(EVENTS.ENVIO_FORMULARIO, {
+      value: total,
+      currency: "BRL",
+      tipo: form.tipo,
+      pacote: pkg.name,
+    });
     // Registro best-effort — não bloqueia o WhatsApp (lead principal vai pelo wa.me).
     fetch("/api/lead", {
       method: "POST",
@@ -141,7 +149,10 @@ export function QuoteForm() {
                   <button
                     type="button"
                     key={o.id}
-                    onClick={() => set("pacote", o.id)}
+                    onClick={() => {
+                      set("pacote", o.id);
+                      track(EVENTS.SELECAO_PACOTE, { pacote: o.name });
+                    }}
                     className={`rounded-xl border p-4 text-left transition-all ${
                       form.pacote === o.id
                         ? "border-gold bg-gold/10"

@@ -38,6 +38,7 @@ export function Packages() {
               <WhatsAppCTA
                 message={`Olá, Recanto! 🍇 Tenho interesse no pacote ${pkg.name} (${brl(pkg.price)}) para o meu evento. Pode me passar os detalhes?`}
                 variant={pkg.highlighted ? "gold" : "primary"}
+                cta={`pacote-${pkg.id}`}
                 className="mt-7 w-full"
               >
                 <WhatsappIcon className="w-4 h-4" /> {pkg.cta}
