@@ -32,6 +32,7 @@ export const baseService = {
 export const nav = [
   { label: "Como funciona", href: "/#como-funciona" },
   { label: "O que inclui", href: "/#inclui" },
+  { label: "Galeria", href: "/#galeria" },
   { label: "Pacotes", href: "/#pacotes" },
   { label: "Dúvidas", href: "/#faq" },
   { label: "Blog", href: "/blog" },
@@ -207,6 +208,44 @@ export const differentials = {
       icon: "HandHeart",
       title: "Sem dor de cabeça",
       desc: "Levamos, servimos e cuidamos de tudo. Você só escolhe a decoração e aproveita a festa.",
+    },
+  ],
+};
+
+export const gallery = {
+  title: "A experiência Recanto, ao vivo",
+  subtitle:
+    "Fotos reais dos nossos eventos — da estação montada ao açaí cremoso servido na hora.",
+  items: [
+    {
+      src: "/images/produtos/acai-cremoso-colher.jpg",
+      alt: "Açaí cremoso premium servido com colher de sorvete",
+      caption: "Açaí cremoso, na hora",
+    },
+    {
+      src: "/images/estacao/estacao-atendente-salao.jpg",
+      alt: "Estação de açaí montada com atendente uniformizada no salão de festas",
+      caption: "Sua estação montada",
+    },
+    {
+      src: "/images/estacao/estacao-complementos.jpg",
+      alt: "Mesa com mais de 15 acompanhamentos do Recanto do Açaí",
+      caption: "+15 acompanhamentos",
+    },
+    {
+      src: "/images/produtos/creme-flocos.jpg",
+      alt: "Creme premium com flocos servido nas estações do Recanto",
+      caption: "Cremes premium",
+    },
+    {
+      src: "/images/eventos/equipe-recanto-evento.jpg",
+      alt: "Equipe uniformizada do Recanto do Açaí em um evento",
+      caption: "Equipe uniformizada",
+    },
+    {
+      src: "/images/eventos/festa-tema-rei-leao.jpg",
+      alt: "Estação de açaí em festa infantil temática",
+      caption: "Festas inesquecíveis",
     },
   ],
 };

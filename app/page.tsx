@@ -6,6 +6,7 @@ import { Included } from "@/components/Included";
 import { Flavors } from "@/components/Flavors";
 import { Packages } from "@/components/Packages";
 import { Differentials } from "@/components/Differentials";
+import { Gallery } from "@/components/Gallery";
 import { Testimonials } from "@/components/Testimonials";
 import { QuoteForm } from "@/components/QuoteForm";
 import { Faq } from "@/components/Faq";
@@ -25,6 +26,7 @@ export default function Home() {
         <Flavors />
         <Packages />
         <Differentials />
+        <Gallery />
         <Testimonials />
         <QuoteForm />
         <Faq />

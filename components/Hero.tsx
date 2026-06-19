@@ -1,6 +1,7 @@
+import Image from "next/image";
 import { hero, waDefaultMessage } from "@/lib/content";
 import { WhatsAppCTA, WhatsappIcon } from "./primitives";
-import { IceCream, Star } from "lucide-react";
+import { Star } from "lucide-react";
 
 export function Hero() {
   return (
@@ -36,11 +37,25 @@ export function Hero() {
           </div>
         </div>
         <div className="flex justify-center">
-          <div className="glass rounded-3xl w-[280px] h-[340px] sm:w-[300px] sm:h-[360px] flex flex-col items-center justify-center relative animate-float shadow-glow">
-            <Star className="w-6 h-6 text-gold absolute top-6 right-6 animate-pulse-soft" />
-            <IceCream className="w-24 h-24 text-gold mb-4" />
-            <span className="font-display text-lg text-white">Açaí &amp; Sorvete Gourmet</span>
-            <span className="text-xs text-muted mt-1">Servido na hora</span>
+          <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[430px] animate-float">
+            <div className="relative w-full h-full overflow-hidden rounded-3xl glass-strong shadow-glow">
+              <Image
+                src="/images/produtos/acai-cremoso-colher.jpg"
+                alt="Açaí cremoso premium servido na hora pelo Recanto do Açaí"
+                fill
+                priority
+                sizes="(max-width: 640px) 280px, 320px"
+                className="object-cover"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/55 via-transparent to-transparent" />
+            </div>
+            <div className="absolute -bottom-5 -left-4 glass-strong rounded-2xl px-4 py-3 shadow-glow flex items-center gap-2.5">
+              <Star className="w-5 h-5 text-gold shrink-0" />
+              <div className="leading-tight">
+                <div className="font-display text-sm font-bold text-white">Servido na hora</div>
+                <div className="text-[11px] text-muted">Açaí &amp; sorvete gourmet</div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
