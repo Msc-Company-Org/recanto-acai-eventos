@@ -1,0 +1,100 @@
+@import "tailwindcss";
+
+@theme {
+  /* Paleta da marca — Açaí premium */
+  --color-bg: #0b0214;
+  --color-bg-soft: #11041f;
+  --color-surface: #1a0b2b;
+  --color-surface-2: #20043c;
+  --color-primary: #8327ec;
+  --color-primary-soft: #984ff3;
+  --color-gold: #e6b800;
+  --color-gold-soft: #ffd54a;
+  --color-ink: #f5f0fa;
+  --color-muted: #bdaec6;
+  --color-line: #2a1640;
+  --color-whats: #25d366;
+  --color-whats-dark: #1da851;
+
+  --font-display: var(--font-lora);
+  --font-sans: var(--font-outfit);
+}
+
+:root {
+  color-scheme: dark;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-ink);
+  font-family: var(--font-sans), system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+::selection {
+  background: var(--color-primary);
+  color: #fff;
+}
+
+/* ---------- Utilitários da marca ---------- */
+.font-display {
+  font-family: var(--font-display), Georgia, "Times New Roman", serif;
+}
+
+.glass {
+  background: rgba(26, 11, 43, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(131, 39, 236, 0.22);
+}
+
+.glass-strong {
+  background: rgba(26, 11, 43, 0.8);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(131, 39, 236, 0.3);
+}
+
+.text-gold-gradient {
+  background: linear-gradient(120deg, #ffe27a 0%, #e6b800 55%, #b88a00 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+.bg-radial-glow {
+  background-image:
+    radial-gradient(55% 45% at 82% 0%, rgba(131, 39, 236, 0.22) 0%, transparent 60%),
+    radial-gradient(45% 45% at 0% 100%, rgba(131, 39, 236, 0.14) 0%, transparent 60%);
+}
+
+.shadow-glow {
+  box-shadow: 0 18px 60px -18px rgba(131, 39, 236, 0.5);
+}
+
+.shadow-gold {
+  box-shadow: 0 18px 60px -18px rgba(230, 184, 0, 0.45);
+}
+
+.divider-gold {
+  height: 2px;
+  width: 64px;
+  background: linear-gradient(90deg, transparent, var(--color-gold), transparent);
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-14px); }
+}
+.animate-float { animation: float 5.5s ease-in-out infinite; }
+
+@keyframes pulse-soft {
+  0%, 100% { transform: scale(1); opacity: 0.55; }
+  50% { transform: scale(1.18); opacity: 1; }
+}
+.animate-pulse-soft { animation: pulse-soft 2.4s ease-in-out infinite; }

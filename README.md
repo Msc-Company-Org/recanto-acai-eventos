@@ -1,43 +1,49 @@
-# Recanto do Açaí — Landing Page de Eventos 🍧
+# Recanto do Açaí · Estações — Landing Page de Eventos 🍇
 
-Esta é a landing page oficial do **Recanto do Açaí** focada no setor de eventos corporativos, aniversários e festividades, ofertando serviços de buffet e carrinhos gourmet de açaí e sorvete sob demanda.
+Landing page **premium** do Recanto do Açaí para a linha de **eventos** — estações de açaí e sorvete gourmet servidas na hora por nossa equipe: casamentos, 15 anos, aniversários, batizados, chá revelação e qualquer celebração. Zona Norte do Rio de Janeiro.
 
-*   **Produção:** [https://recanto-acai-eventos-lp.vercel.app](https://recanto-acai-eventos-lp.vercel.app)
+- **Produção:** https://recanto-acai-eventos-lp.vercel.app
 
----
+## Stack
 
-## 💻 Stack Tecnológica
+- **Next.js 16** (App Router) + **React 19** + **TypeScript**
+- **Tailwind CSS v4**
+- **lucide-react** (ícones)
+- Deploy: **Vercel**
 
-*   **Frontend:** HTML5 semântico e CSS3 Vanilla (sem pré-processadores).
-*   **Fontes:** Google Fonts (Lora para serifas elegantes e Outfit para leitura moderna).
-*   **Ícones:** Biblioteca FontAwesome 6.4 integrada.
-*   **Deploy:** Pipeline de publicação automática na Vercel a cada alteração da branch principal.
+## Desenvolvimento
 
----
-
-## 🚀 Como Executar e Deployar
-
-### Execução Local
-Por ser um site estático simples, basta abrir o arquivo `index.html` em qualquer navegador ou utilizar um servidor local rápido (como a extensão Live Server do VSCode ou `npx serve`).
-
-### Deploy de Alterações
-Para publicar novas atualizações de layout ou fotos no ambiente de produção:
 ```bash
-git add .
-git commit -m "feat: atualiza design da lp de eventos"
-git push origin master  # Dispara o deploy automático na Vercel
+pnpm install
+pnpm dev      # http://localhost:3000
+pnpm build    # build de produção
+pnpm start    # serve o build de produção
 ```
 
----
-
-## 📂 Estrutura de Diretórios
+## Estrutura
 
 ```
-recanto-acai-eventos-lp/
-├── css/             # Arquivos de estilo (style.css, responsividade)
-├── js/              # Scripts auxiliares de animação e navegação
-├── public/          # Ativos estáticos e logotipos do Recanto
-├── index.html       # Arquivo HTML principal do portal
-├── vercel.json      # Configuração de rotas e headers da Vercel
-└── README.md        # Documentação do projeto
+app/
+  page.tsx           # landing (compõe as seções)
+  layout.tsx         # fontes (Lora/Outfit) + metadata/SEO
+  api/lead/route.ts  # recebe o lead do formulário de orçamento
+  sitemap.ts         # /sitemap.xml
+  robots.ts          # /robots.txt
+components/           # uma seção por arquivo (Hero, Packages, QuoteForm, ...)
+lib/content.ts        # TODA a copy (fonte única de verdade) — edite aqui
+lib/utils.ts          # helpers (waLink, brl)
 ```
+
+## Conteúdo & copy
+
+Toda a copy vive em **`lib/content.ts`**. Os itens marcados com `[CONFIRMAR]` precisam de dados reais antes do go-live:
+número de WhatsApp oficial, escopo do pacote (duração / convidados / sabores), lista de sabores, raio de atendimento, formas de pagamento, depoimentos e fotos reais.
+
+## Pacotes
+
+| Pacote | Preço |
+|---|---|
+| Açaí **ou** Sorvete | R$ 1.490 |
+| Açaí **+** Sorvete (combo, mais escolhido) | R$ 1.690 |
+| Sabor extra premium | +R$ 350 |
+| Sabor extra normal | +R$ 250 |
