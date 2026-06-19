@@ -2,7 +2,6 @@ import { NextResponse } from "next/server";
 import crypto from "crypto";
 import { getDb, hasDb } from "@/lib/db";
 import { leads, leadActivities } from "@/lib/schema";
-import { notifyNewLead } from "@/lib/notify";
 
 // Webhook do Stripe: confirma pagamento (site OU Artemis) e grava o lead como "ganho" no CRM.
 export async function POST(req: Request) {
@@ -56,7 +55,6 @@ export async function POST(req: Request) {
           content: `💰 Pagamento confirmado: R$ ${valor} (${md.modo || "-"} · ${source}).`,
           author: "stripe",
         });
-        await notifyNewLead(row);
       } else {
         console.log("[stripe-webhook] pago (sem DB):", valor, md);
       }
