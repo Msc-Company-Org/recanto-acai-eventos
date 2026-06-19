@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import { Lora, Outfit } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/content";
+import { Analytics } from "@/components/Analytics";
 
 const lora = Lora({
   subsets: ["latin"],
@@ -55,7 +56,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
   return (
     <html lang="pt-BR" className={`${lora.variable} ${outfit.variable} antialiased`}>
-      <body className="min-h-screen bg-bg text-ink overflow-x-hidden">{children}</body>
+      <body className="min-h-screen bg-bg text-ink overflow-x-hidden">
+        {children}
+        <Analytics />
+      </body>
     </html>
   );
 }

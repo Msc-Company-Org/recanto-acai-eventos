@@ -47,3 +47,14 @@ número de WhatsApp oficial, escopo do pacote (duração / convidados / sabores)
 | Açaí **+** Sorvete (combo, mais escolhido) | R$ 1.690 |
 | Sabor extra premium | +R$ 350 |
 | Sabor extra normal | +R$ 250 |
+
+## Variáveis de ambiente (opcional)
+
+Configure na Vercel para ativar o tracking (sem elas, o site funciona normalmente, sem analytics):
+
+- `NEXT_PUBLIC_GA_ID` — Google Analytics 4 (ex. `G-XXXXXXX`)
+- `NEXT_PUBLIC_META_PIXEL_ID` — Meta (Facebook) Pixel
+
+## Blog
+
+Posts em `content/blog/*.md` (markdown + frontmatter). Adicionar um `.md` novo cria a página automaticamente em `/blog/<slug>` e entra no sitemap.

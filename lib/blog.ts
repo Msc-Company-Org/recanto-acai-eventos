@@ -1,0 +1,55 @@
+import fs from "node:fs";
+import path from "node:path";
+
+const BLOG_DIR = path.join(process.cwd(), "content", "blog");
+
+export type Post = {
+  slug: string;
+  title: string;
+  description: string;
+  date: string;
+  category?: string;
+  excerpt?: string;
+  readingTime?: string;
+  content: string;
+};
+
+function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
+  const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
+  if (!m) return { data: {}, content: raw };
+  const data: Record<string, string> = {};
+  for (const line of m[1].split(/\r?\n/)) {
+    const idx = line.indexOf(":");
+    if (idx === -1) continue;
+    const key = line.slice(0, idx).trim();
+    const val = line.slice(idx + 1).trim().replace(/^["']|["']$/g, "");
+    data[key] = val;
+  }
+  return { data, content: m[2] };
+}
+
+export function getAllPosts(): Post[] {
+  if (!fs.existsSync(BLOG_DIR)) return [];
+  return fs
+    .readdirSync(BLOG_DIR)
+    .filter((f) => f.endsWith(".md"))
+    .map((file) => {
+      const raw = fs.readFileSync(path.join(BLOG_DIR, file), "utf8");
+      const { data, content } = parseFrontmatter(raw);
+      return {
+        slug: file.replace(/\.md$/, ""),
+        title: data.title ?? file,
+        description: data.description ?? "",
+        date: data.date ?? "",
+        category: data.category,
+        excerpt: data.excerpt ?? data.description,
+        readingTime: data.readingTime,
+        content,
+      };
+    })
+    .sort((a, b) => (a.date < b.date ? 1 : -1));
+}
+
+export function getPost(slug: string): Post | undefined {
+  return getAllPosts().find((p) => p.slug === slug);
+}

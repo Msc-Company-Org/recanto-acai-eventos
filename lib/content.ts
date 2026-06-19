@@ -30,10 +30,11 @@ export const baseService = {
 } as const;
 
 export const nav = [
-  { label: "Como funciona", href: "#como-funciona" },
-  { label: "O que inclui", href: "#inclui" },
-  { label: "Pacotes", href: "#pacotes" },
-  { label: "Dúvidas", href: "#faq" },
+  { label: "Como funciona", href: "/#como-funciona" },
+  { label: "O que inclui", href: "/#inclui" },
+  { label: "Pacotes", href: "/#pacotes" },
+  { label: "Dúvidas", href: "/#faq" },
+  { label: "Blog", href: "/blog" },
 ] as const;
 
 export const hero = {
