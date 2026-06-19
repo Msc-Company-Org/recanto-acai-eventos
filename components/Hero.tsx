@@ -5,9 +5,9 @@ import { Star } from "lucide-react";
 
 export function Hero() {
   return (
-    <section id="top" className="relative bg-radial-glow pt-32 pb-20 md:pt-40 md:pb-28">
-      <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
-        <div className="text-center md:text-left">
+    <section id="top" className="relative bg-radial-glow pt-28 pb-14 md:pt-40 md:pb-28">
+      <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-[1.1fr_0.9fr] gap-8 md:gap-12 items-center">
+        <div className="text-center md:text-left order-2 md:order-1">
           <span className="inline-block glass rounded-full px-4 py-1.5 text-xs font-semibold text-primary mb-6">
             {hero.badge}
           </span>
@@ -36,8 +36,8 @@ export function Hero() {
             ))}
           </div>
         </div>
-        <div className="flex justify-center">
-          <div className="relative w-[280px] h-[360px] sm:w-[320px] sm:h-[430px] animate-float">
+        <div className="flex justify-center order-1 md:order-2">
+          <div className="relative w-[240px] h-[300px] sm:w-[300px] sm:h-[400px] animate-float">
             <div className="relative w-full h-full overflow-hidden rounded-3xl glass-strong shadow-glow">
               <Image
                 src="/images/produtos/acai-cremoso-colher.jpg"
