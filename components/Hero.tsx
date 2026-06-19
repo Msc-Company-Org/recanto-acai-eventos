@@ -11,7 +11,7 @@ export function Hero() {
           <span className="inline-block glass rounded-full px-4 py-1.5 text-xs font-semibold text-primary mb-6">
             {hero.badge}
           </span>
-          <h1 className="font-display text-[2.6rem] sm:text-5xl md:text-[3.75rem] font-semibold leading-[1.04] tracking-tight text-ink text-balance">
+          <h1 className="font-display text-3xl sm:text-4xl md:text-[3.25rem] font-semibold leading-[1.1] tracking-tight text-ink text-balance">
             {hero.titleLead}{" "}
             <span className="text-gold-gradient">{hero.titleHighlight}</span>.
           </h1>
