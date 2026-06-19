@@ -13,7 +13,7 @@ export const site = {
   region: "Guadalupe · Marechal Hermes — Zona Norte do Rio de Janeiro",
   // [CONFIRMAR] raio de atendimento + taxa de deslocamento.
   serviceArea: "Atendemos o Rio de Janeiro e região",
-  url: "https://recanto-acai-eventos-lp.vercel.app",
+  url: "https://eventos.recantodoaçaiestações.com.br",
   instagram: "https://instagram.com/recanto_do_acai_guadalule",
   instagramHandle: "@recanto_do_acai_guadalule",
   tiktok: "https://www.tiktok.com/@recantodoacaiestacoes",
