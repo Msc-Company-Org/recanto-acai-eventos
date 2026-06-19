@@ -6,7 +6,7 @@ export function Differentials() {
   return (
     <section className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionTitle title={differentials.title} subtitle={differentials.subtitle} />
+        <SectionTitle eyebrow="Diferenciais" title={differentials.title} subtitle={differentials.subtitle} />
         <div className="grid sm:grid-cols-3 gap-6 mt-12">
           {differentials.items.map((item) => (
             <div key={item.title} className="glass rounded-2xl overflow-hidden">

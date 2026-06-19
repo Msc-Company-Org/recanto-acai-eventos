@@ -8,14 +8,14 @@ export function Hero() {
     <section id="top" className="relative bg-radial-glow pt-32 pb-20 md:pt-40 md:pb-28">
       <div className="mx-auto max-w-6xl px-6 grid md:grid-cols-[1.15fr_0.85fr] gap-12 items-center">
         <div className="text-center md:text-left">
-          <span className="inline-block glass rounded-full px-4 py-1.5 text-xs font-semibold text-gold mb-6">
+          <span className="inline-block glass rounded-full px-4 py-1.5 text-xs font-semibold text-primary mb-6">
             {hero.badge}
           </span>
-          <h1 className="font-display text-4xl sm:text-5xl md:text-6xl font-bold leading-[1.1] text-ink">
+          <h1 className="font-display text-[2.6rem] sm:text-5xl md:text-[3.75rem] font-semibold leading-[1.04] tracking-tight text-ink text-balance">
             {hero.titleLead}{" "}
             <span className="text-gold-gradient">{hero.titleHighlight}</span>.
           </h1>
-          <p className="text-muted text-lg mt-6 max-w-xl mx-auto md:mx-0">{hero.subtitle}</p>
+          <p className="text-muted text-lg mt-6 max-w-xl mx-auto md:mx-0 leading-relaxed text-pretty">{hero.subtitle}</p>
           <div className="flex flex-wrap gap-4 justify-center md:justify-start mt-8">
             <WhatsAppCTA message={waDefaultMessage} variant="primary">
               <WhatsappIcon /> {hero.ctaPrimary}

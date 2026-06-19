@@ -1,13 +1,14 @@
 import type { Metadata } from "next";
-import { Lora, Outfit } from "next/font/google";
+import { Fraunces, Outfit } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/content";
 import { Analytics } from "@/components/Analytics";
 
-const lora = Lora({
+const fraunces = Fraunces({
   subsets: ["latin"],
-  variable: "--font-lora",
+  variable: "--font-fraunces",
   display: "swap",
+  axes: ["opsz", "SOFT", "WONK"],
 });
 
 const outfit = Outfit({
@@ -49,14 +50,26 @@ export const metadata: Metadata = {
     description: "Açaí & sorvete gourmet para eventos no Rio de Janeiro.",
   },
   alternates: { canonical: site.url },
+  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
+    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
+    : undefined,
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="pt-BR" className={`${lora.variable} ${outfit.variable} antialiased`}>
+    <html lang="pt-BR" className={`${fraunces.variable} ${outfit.variable} antialiased`}>
       <body className="min-h-screen bg-bg text-ink overflow-x-hidden">
+        <noscript>
+          <iframe
+            src="https://www.googletagmanager.com/ns.html?id=GTM-K5DK33L3"
+            height="0"
+            width="0"
+            style={{ display: "none", visibility: "hidden" }}
+            title="Google Tag Manager"
+          />
+        </noscript>
         {children}
         <Analytics />
       </body>

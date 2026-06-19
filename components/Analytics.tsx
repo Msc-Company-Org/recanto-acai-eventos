@@ -1,15 +1,28 @@
 import Script from "next/script";
 
 /**
- * Carrega GA4 e Meta Pixel apenas se as variáveis de ambiente existirem.
- * Configure na Vercel: NEXT_PUBLIC_GA_ID (G-XXXX) e NEXT_PUBLIC_META_PIXEL_ID.
+ * Tracking do site.
+ * - GTM (Google Tag Manager): contêiner central. Configure GA4 e Meta Pixel como TAGS dentro do GTM.
+ * - GA4 / Meta Pixel diretos: opcionais; só disparam se os env existirem (evita duplicar com o GTM).
+ * Env (Vercel): NEXT_PUBLIC_GTM_ID, NEXT_PUBLIC_GA_ID (G-XXXX), NEXT_PUBLIC_META_PIXEL_ID.
  */
+const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-K5DK33L3";
+
 export function Analytics() {
   const ga = process.env.NEXT_PUBLIC_GA_ID;
   const pixel = process.env.NEXT_PUBLIC_META_PIXEL_ID;
 
   return (
     <>
+      {GTM_ID && (
+        <Script id="gtm-init" strategy="afterInteractive">
+          {`(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+})(window,document,'script','dataLayer','${GTM_ID}');`}
+        </Script>
+      )}
       {ga && (
         <>
           <Script

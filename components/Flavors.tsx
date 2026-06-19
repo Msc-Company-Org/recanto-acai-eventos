@@ -5,7 +5,7 @@ export function Flavors() {
   return (
     <section className="py-20 md:py-28 bg-bg-soft">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionTitle title={flavors.title} subtitle={flavors.subtitle} />
+        <SectionTitle eyebrow="Acompanhamentos" title={flavors.title} subtitle={flavors.subtitle} />
         <div className="grid sm:grid-cols-3 gap-6 mt-12">
           {flavors.groups.map((group) => (
             <div key={group.title} className="glass rounded-2xl p-7">

@@ -6,7 +6,7 @@ export function Included() {
   return (
     <section id="inclui" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionTitle title={included.title} subtitle={included.subtitle} />
+        <SectionTitle eyebrow="No pacote" title={included.title} subtitle={included.subtitle} />
         <div className="grid sm:grid-cols-2 gap-6 mt-12">
           {included.items.map((item) => (
             <div key={item.title} className="glass rounded-2xl overflow-hidden">

@@ -55,7 +55,7 @@ export const hero = {
 
 export const eventTypes = {
   title: "Para qualquer celebração",
-  subtitle: "Do casamento ao chá revelação — a gente adoça todos os momentos.",
+  subtitle: "Do casamento à festa de 1 aninho — a gente adoça cada momento da sua celebração.",
   items: [
     { icon: "Heart", label: "Casamentos" },
     { icon: "Crown", label: "15 anos" },
@@ -70,7 +70,7 @@ export const eventTypes = {
 
 export const howItWorks = {
   title: "Como funciona",
-  subtitle: "Simples assim — em 4 passos.",
+  subtitle: "Da reserva à festa em 4 passos — sem complicação nenhuma.",
   steps: [
     {
       n: "01",
@@ -196,7 +196,7 @@ export const flavors = {
 
 export const differentials = {
   title: "Por que o Recanto do Açaí?",
-  subtitle: "Nossa missão é fazer a sua mesa ser inesquecível.",
+  subtitle: "Os detalhes que transformam a sua mesa na lembrança da festa.",
   items: [
     {
       icon: "Award",

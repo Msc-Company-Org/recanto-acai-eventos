@@ -5,7 +5,7 @@ export function HowItWorks() {
   return (
     <section id="como-funciona" className="py-20 md:py-28 bg-bg-soft">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionTitle title={howItWorks.title} subtitle={howItWorks.subtitle} />
+        <SectionTitle eyebrow="Passo a passo" title={howItWorks.title} subtitle={howItWorks.subtitle} />
         <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
           {howItWorks.steps.map((step) => (
             <div key={step.n} className="glass rounded-2xl p-7">

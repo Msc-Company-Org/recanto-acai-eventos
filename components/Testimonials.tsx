@@ -6,7 +6,7 @@ export function Testimonials() {
   return (
     <section className="py-20 md:py-28 bg-bg-soft">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionTitle title={testimonials.title} subtitle={testimonials.subtitle} />
+        <SectionTitle eyebrow="Depoimentos" title={testimonials.title} subtitle={testimonials.subtitle} />
         <div className="grid sm:grid-cols-3 gap-6 mt-12">
           {testimonials.items.map((t) => (
             <div key={t.name} className="glass rounded-2xl p-7 flex flex-col">

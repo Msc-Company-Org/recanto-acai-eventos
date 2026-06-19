@@ -84,14 +84,16 @@ export function SectionTitle({
   return (
     <div className={center ? "text-center max-w-2xl mx-auto" : "max-w-2xl"}>
       {eyebrow && (
-        <span className="text-gold text-sm font-semibold uppercase tracking-widest">
+        <span className="inline-block text-primary text-xs font-bold uppercase tracking-[0.2em] mb-3">
           {eyebrow}
         </span>
       )}
-      <h2 className="font-display text-3xl sm:text-4xl md:text-5xl font-bold text-ink mt-3">
+      <h2 className="font-display text-[1.95rem] sm:text-4xl md:text-[2.9rem] font-semibold text-ink tracking-tight leading-[1.08] text-balance">
         {title}
       </h2>
-      {subtitle && <p className="text-muted text-lg mt-4">{subtitle}</p>}
+      {subtitle && (
+        <p className="text-muted text-base sm:text-lg mt-4 leading-relaxed text-balance">{subtitle}</p>
+      )}
       <div className={`divider-gold mt-6 ${center ? "mx-auto" : ""}`} />
     </div>
   );

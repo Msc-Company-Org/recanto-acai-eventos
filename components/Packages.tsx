@@ -7,7 +7,7 @@ export function Packages() {
   return (
     <section id="pacotes" className="py-20 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
-        <SectionTitle title={packages.title} subtitle={packages.subtitle} />
+        <SectionTitle eyebrow="Pacotes" title={packages.title} subtitle={packages.subtitle} />
 
         <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
           {packages.options.map((pkg) => (
