@@ -1,5 +1,6 @@
 import { Resend } from "resend";
 import { brl } from "./utils";
+import { escapeHtml } from "./html";
 
 type LeadEmail = {
   name: string;
@@ -30,7 +31,7 @@ export async function notifyNewLead(lead: LeadEmail): Promise<{ sent: boolean }>
     const resend = new Resend(key);
     const from = process.env.RESEND_FROM || "Recanto Eventos <onboarding@resend.dev>";
     const linha = (k: string, v: string) =>
-      `<tr><td style="padding:4px 12px;color:#777">${k}</td><td style="padding:4px 12px;font-weight:600">${v}</td></tr>`;
+      `<tr><td style="padding:4px 12px;color:#777">${escapeHtml(k)}</td><td style="padding:4px 12px;font-weight:600">${escapeHtml(v)}</td></tr>`;
     await resend.emails.send({
       from,
       to,
@@ -48,7 +49,7 @@ export async function notifyNewLead(lead: LeadEmail): Promise<{ sent: boolean }>
             ${linha("Estimativa", brl(lead.estimatedValue))}
             ${linha("Score", `${lead.score} (${lead.temperature})`)}
           </table>
-          <p style="margin-top:16px"><a href="https://wa.me/${lead.whatsapp.replace(/\D/g, "")}" style="background:#25d366;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none">Responder no WhatsApp</a></p>
+          <p style="margin-top:16px"><a href="https://wa.me/${String(lead.whatsapp || "").replace(/\D/g, "")}" style="background:#25d366;color:#fff;padding:10px 18px;border-radius:8px;text-decoration:none">Responder no WhatsApp</a></p>
         </div>`,
     });
     return { sent: true };

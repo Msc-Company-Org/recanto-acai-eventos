@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { waLink } from "@/lib/utils";
 import { TrackReserva } from "@/components/TrackReserva";
 
@@ -37,9 +38,9 @@ export default async function Obrigado({
           Confirmar no WhatsApp
         </a>
         <div className="mt-4">
-          <a href="/" className="text-sm text-muted hover:text-primary transition-colors">
+          <Link href="/" className="text-sm text-muted hover:text-primary transition-colors">
             Voltar ao site
-          </a>
+          </Link>
         </div>
       </div>
     </main>

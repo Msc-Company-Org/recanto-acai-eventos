@@ -1,7 +1,7 @@
 import "server-only";
 import { getDb } from "./db";
 import { leads, leadActivities } from "./schema";
-import { STAGE_IDS } from "./crm-constants";
+import { computeStats } from "./stats";
 import { desc, eq, and, ilike, type SQL } from "drizzle-orm";
 
 export async function listLeads(filter?: {
@@ -9,74 +9,62 @@ export async function listLeads(filter?: {
   temperature?: string;
   q?: string;
 }) {
-  const db = getDb();
-  const conds: SQL[] = [];
-  if (filter?.stage) conds.push(eq(leads.stage, filter.stage));
-  if (filter?.temperature) conds.push(eq(leads.temperature, filter.temperature));
-  if (filter?.q) conds.push(ilike(leads.name, `%${filter.q}%`));
-  const where = conds.length ? and(...conds) : undefined;
-  return db.select().from(leads).where(where).orderBy(desc(leads.createdAt)).limit(500);
+  try {
+    const db = getDb();
+    const conds: SQL[] = [];
+    if (filter?.stage) conds.push(eq(leads.stage, filter.stage));
+    if (filter?.temperature) conds.push(eq(leads.temperature, filter.temperature));
+    if (filter?.q) conds.push(ilike(leads.name, `%${filter.q}%`));
+    const where = conds.length ? and(...conds) : undefined;
+    return await db.select().from(leads).where(where).orderBy(desc(leads.createdAt)).limit(500);
+  } catch (e) {
+    console.error("[crm] listLeads:", e);
+    return [];
+  }
 }
 
 export async function getLead(id: string) {
-  const db = getDb();
-  const [lead] = await db.select().from(leads).where(eq(leads.id, id));
-  return lead;
+  try {
+    const db = getDb();
+    const [lead] = await db.select().from(leads).where(eq(leads.id, id));
+    return lead;
+  } catch (e) {
+    console.error("[crm] getLead:", e);
+    return undefined;
+  }
 }
 
 export async function getActivities(leadId: string) {
-  const db = getDb();
-  return db
-    .select()
-    .from(leadActivities)
-    .where(eq(leadActivities.leadId, leadId))
-    .orderBy(desc(leadActivities.createdAt));
+  try {
+    const db = getDb();
+    return await db
+      .select()
+      .from(leadActivities)
+      .where(eq(leadActivities.leadId, leadId))
+      .orderBy(desc(leadActivities.createdAt));
+  } catch (e) {
+    console.error("[crm] getActivities:", e);
+    return [];
+  }
 }
 
 export async function allLeads() {
-  const db = getDb();
-  return db.select().from(leads).orderBy(desc(leads.createdAt)).limit(500);
+  try {
+    const db = getDb();
+    return await db.select().from(leads).orderBy(desc(leads.createdAt)).limit(500);
+  } catch (e) {
+    console.error("[crm] allLeads:", e);
+    return [];
+  }
 }
 
 export async function dashboardStats() {
-  const db = getDb();
-  const all = await db.select().from(leads);
-  const total = all.length;
-  const byStage: Record<string, number> = {};
-  STAGE_IDS.forEach((s) => (byStage[s] = 0));
-  const byTemp: Record<string, number> = { quente: 0, morno: 0, frio: 0 };
-  const bySource: Record<string, { count: number; value: number }> = {};
-  let pipelineValue = 0;
-  let scoreSum = 0;
-  let won = 0;
-  let lost = 0;
-  let revenue = 0;
-
-  for (const l of all) {
-    byStage[l.stage] = (byStage[l.stage] || 0) + 1;
-    byTemp[l.temperature] = (byTemp[l.temperature] || 0) + 1;
-    scoreSum += l.score;
-    const src = l.source || "site";
-    if (!bySource[src]) bySource[src] = { count: 0, value: 0 };
-    bySource[src].count += 1;
-    if (l.stage === "ganho") {
-      won += 1;
-      revenue += l.estimatedValue;
-      bySource[src].value += l.estimatedValue;
-    } else if (l.stage === "perdido") {
-      lost += 1;
-    } else {
-      pipelineValue += l.estimatedValue;
-    }
+  try {
+    const db = getDb();
+    const all = await db.select().from(leads);
+    return computeStats(all);
+  } catch (e) {
+    console.error("[crm] dashboardStats:", e);
+    return computeStats([]);
   }
-
-  const avgScore = total ? Math.round(scoreSum / total) : 0;
-  const closed = won + lost;
-  const conversion = closed ? Math.round((won / closed) * 100) : 0;
-  const recent = all
-    .slice()
-    .sort((a, b) => (a.createdAt < b.createdAt ? 1 : -1))
-    .slice(0, 8);
-
-  return { total, byStage, byTemp, bySource, pipelineValue, revenue, avgScore, conversion, won, lost, recent };
 }

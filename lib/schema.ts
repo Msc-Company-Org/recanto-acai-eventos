@@ -19,6 +19,7 @@ export const leads = pgTable("leads", {
   temperature: text("temperature").notNull().default("frio"),
   stage: text("stage").notNull().default("novo"),
   notes: text("notes"),
+  stripeSessionId: text("stripe_session_id"),
 });
 
 export const leadActivities = pgTable("lead_activities", {

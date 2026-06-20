@@ -1,5 +1,7 @@
 import { NextResponse } from "next/server";
 import { valorReserva } from "@/lib/pricing";
+import { parseCheckoutInput, buildSuccessUrl, safeOrigin } from "@/lib/checkout";
+import { safeJson } from "@/lib/http";
 
 // Price IDs do catálogo Stripe (criados via API; não são segredos).
 const PRICES: Record<string, Record<string, string>> = {
@@ -9,28 +11,27 @@ const PRICES: Record<string, Record<string, string>> = {
 
 export async function POST(req: Request) {
   try {
-    const { pacote = "combo", modo = "total" } = await req.json();
-    const pk = PRICES[pacote] ? pacote : "combo";
-    const md = modo === "sinal" ? "sinal" : "total";
-    const price = PRICES[pk][md];
+    const input = await safeJson(req);
+    if (input === null) {
+      return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
+    }
+    const { pacote, modo } = parseCheckoutInput(input);
+    const price = PRICES[pacote][modo];
+
     const key = process.env.STRIPE_SECRET_KEY;
     if (!key) return NextResponse.json({ error: "pagamento indisponível" }, { status: 500 });
 
-    const origin = req.headers.get("origin") || "https://recanto-eventos.vercel.app";
-    const valor = valorReserva(pk, md); // valor da conversão de compra (o que é cobrado agora)
+    const origin = req.headers.get("origin");
+    const valor = valorReserva(pacote, modo);
     const body = new URLSearchParams();
     body.set("mode", "payment");
-    // session_id permite dedup da conversão; valor/pacote/modo alimentam GA4/Google Ads/Meta.
-    body.set(
-      "success_url",
-      `${origin}/obrigado?pago=1&valor=${valor}&pacote=${pk}&modo=${md}&session_id={CHECKOUT_SESSION_ID}`
-    );
-    body.set("cancel_url", `${origin}/#pacotes`);
+    body.set("success_url", buildSuccessUrl(origin, { valor, pacote, modo }));
+    body.set("cancel_url", `${safeOrigin(origin)}/#pacotes`);
     body.set("line_items[0][price]", price);
     body.set("line_items[0][quantity]", "1");
     body.set("phone_number_collection[enabled]", "true");
-    body.set("metadata[pacote]", pk);
-    body.set("metadata[modo]", md);
+    body.set("metadata[pacote]", pacote);
+    body.set("metadata[modo]", modo);
     body.set("metadata[origem]", "site-checkout");
 
     const r = await fetch("https://api.stripe.com/v1/checkout/sessions", {
@@ -39,7 +40,7 @@ export async function POST(req: Request) {
       body,
     });
     const data = await r.json();
-    if (!r.ok) {
+    if (!r.ok || !data?.url) {
       console.error("[checkout] stripe:", data?.error?.message || data);
       return NextResponse.json({ error: "falha ao iniciar o pagamento" }, { status: 502 });
     }

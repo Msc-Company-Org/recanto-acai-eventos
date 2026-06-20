@@ -15,10 +15,15 @@ Landing page **premium** do Recanto do Açaí para a linha de **eventos** — es
 
 ```bash
 pnpm install
-pnpm dev      # http://localhost:3000
-pnpm build    # build de produção
-pnpm start    # serve o build de produção
+pnpm dev       # http://localhost:3000
+pnpm build     # build de produção
+pnpm start     # serve o build de produção
+pnpm test      # testes (Vitest) — ver TESTING.md
+pnpm typecheck # tsc --noEmit
+pnpm lint      # eslint
 ```
+
+> Testes, tratamento de erro e robustez: ver [TESTING.md](./TESTING.md). CI em `.github/workflows/ci.yml`.
 
 ## Estrutura
 

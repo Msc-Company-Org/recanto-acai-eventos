@@ -18,7 +18,8 @@ export type Post = {
   content: string;
 };
 
-function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
+export function parseFrontmatter(raw: string): { data: Record<string, string>; content: string } {
+  if (raw.charCodeAt(0) === 0xfeff) raw = raw.slice(1); // remove BOM, se presente
   const m = raw.match(/^---\r?\n([\s\S]*?)\r?\n---\r?\n?([\s\S]*)$/);
   if (!m) return { data: {}, content: raw };
   const data: Record<string, string> = {};
@@ -34,13 +35,12 @@ function parseFrontmatter(raw: string): { data: Record<string, string>; content:
 
 export function getAllPosts(): Post[] {
   if (!fs.existsSync(BLOG_DIR)) return [];
-  return fs
-    .readdirSync(BLOG_DIR)
-    .filter((f) => f.endsWith(".md"))
-    .map((file) => {
+  const posts: Post[] = [];
+  for (const file of fs.readdirSync(BLOG_DIR).filter((f) => f.endsWith(".md"))) {
+    try {
       const raw = fs.readFileSync(path.join(BLOG_DIR, file), "utf8");
       const { data, content } = parseFrontmatter(raw);
-      return {
+      posts.push({
         slug: file.replace(/\.md$/, ""),
         title: data.title ?? file,
         description: data.description ?? "",
@@ -53,9 +53,12 @@ export function getAllPosts(): Post[] {
         keywords: data.keywords,
         audio: data.audio,
         content,
-      };
-    })
-    .sort((a, b) => (a.date < b.date ? 1 : -1));
+      });
+    } catch (e) {
+      console.error(`[blog] falha ao ler "${file}":`, e);
+    }
+  }
+  return posts.sort((a, b) => (a.date < b.date ? 1 : -1));
 }
 
 export function getPost(slug: string): Post | undefined {
