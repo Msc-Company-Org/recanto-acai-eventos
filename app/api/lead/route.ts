@@ -4,45 +4,45 @@ import { leads, leadActivities } from "@/lib/schema";
 import { computeScore } from "@/lib/leadScore";
 import { notifyNewLead } from "@/lib/notify";
 import { safeJson } from "@/lib/http";
-
-const str = (v: unknown): string | undefined => (typeof v === "string" && v ? v : undefined);
-const num = (v: unknown): number => Number(v) || 0;
+import { parseLead } from "@/lib/validation";
+import { clientKey, rateLimit } from "@/lib/rateLimit";
 
 // Recebe o lead do formulário de orçamento da landing.
 export async function POST(req: Request) {
   try {
-    const data = await safeJson<Record<string, unknown>>(req);
-    if (data === null) {
-      return NextResponse.json({ ok: false, error: "JSON inválido" }, { status: 400 });
+    if (!rateLimit(clientKey(req, "lead"), 10, 60_000).ok) {
+      return NextResponse.json({ ok: false, error: "muitas requisições" }, { status: 429 });
     }
 
-    const g = data.convidados != null ? parseInt(String(data.convidados), 10) : NaN;
-    const guests = Number.isFinite(g) ? g : null;
-    const pkg = data.pacote === "unico" ? "unico" : "combo";
+    const body = await safeJson(req);
+    if (body === null) {
+      return NextResponse.json({ ok: false, error: "JSON inválido" }, { status: 400 });
+    }
+    const v = parseLead(body);
 
     const { score, temperature } = computeScore({
-      eventType: str(data.tipo),
-      package: pkg,
-      guests,
-      eventDate: str(data.data) ?? null,
-      whatsapp: str(data.whatsapp),
-      name: str(data.nome),
-      extraPremium: num(data.extraPremium),
-      extraNormal: num(data.extraNormal),
-      source: str(data.source),
+      eventType: v.tipo || undefined,
+      package: v.pacote,
+      guests: v.convidados,
+      eventDate: v.data,
+      whatsapp: v.whatsapp || undefined,
+      name: v.nome || undefined,
+      extraPremium: v.extraPremium,
+      extraNormal: v.extraNormal,
+      source: v.source || undefined,
     });
 
     const row = {
-      name: str(data.nome) ?? "",
-      whatsapp: str(data.whatsapp) ?? "",
-      eventType: str(data.tipo) ?? "",
-      eventDate: str(data.data) ?? null,
-      guests,
-      package: pkg,
-      extraPremium: num(data.extraPremium),
-      extraNormal: num(data.extraNormal),
-      estimatedValue: num(data.total),
-      source: str(data.source) === "whatsapp" ? "whatsapp" : "site",
+      name: v.nome,
+      whatsapp: v.whatsapp,
+      eventType: v.tipo,
+      eventDate: v.data,
+      guests: v.convidados,
+      package: v.pacote,
+      extraPremium: v.extraPremium,
+      extraNormal: v.extraNormal,
+      estimatedValue: v.total,
+      source: v.source === "whatsapp" ? "whatsapp" : "site",
       score,
       temperature,
       stage: "novo",

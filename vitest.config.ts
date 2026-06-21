@@ -8,7 +8,7 @@ export default defineConfig({
   test: {
     environment: "node",
     globals: true,
-    include: ["lib/**/*.test.ts"],
+    include: ["lib/**/*.test.ts", "components/**/*.test.tsx", "tests/**/*.test.ts"],
     coverage: {
       provider: "v8",
       include: ["lib/**/*.ts"],

@@ -1,14 +1,13 @@
+import { CheckoutSchema, type CheckoutInput } from "./validation";
+
 export const PACKAGE_IDS = ["unico", "combo"] as const;
 export const MODES = ["sinal", "total"] as const;
 export type PackageId = (typeof PACKAGE_IDS)[number];
 export type Mode = (typeof MODES)[number];
 
-/** Valida/normaliza a entrada do checkout (fallback: combo/total). Pura. */
-export function parseCheckoutInput(body: unknown): { pacote: PackageId; modo: Mode } {
-  const b = (body || {}) as Record<string, unknown>;
-  const pacote = PACKAGE_IDS.includes(b.pacote as PackageId) ? (b.pacote as PackageId) : "combo";
-  const modo = MODES.includes(b.modo as Mode) ? (b.modo as Mode) : "total";
-  return { pacote, modo };
+/** Valida/normaliza a entrada do checkout via zod (fallback: combo/total). Pura. */
+export function parseCheckoutInput(body: unknown): CheckoutInput {
+  return CheckoutSchema.parse(body ?? {});
 }
 
 // Origins confiáveis para o success_url (evita open-redirect via header forjado).

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import { eq } from "drizzle-orm";
 import { getDb, hasDb } from "@/lib/db";
-import { leads, leadActivities } from "@/lib/schema";
+import { leads, leadActivities, type Lead } from "@/lib/schema";
 import { verifyStripeSignature, parseCheckoutCompleted } from "@/lib/stripe";
 
 // Webhook do Stripe: confirma pagamento (site OU Artemis) e grava o lead como "ganho" no CRM.
@@ -23,7 +23,8 @@ export async function POST(req: Request) {
 
   const paid = parseCheckoutCompleted(event);
   if (paid) {
-    const row = {
+    // Campos base (sempre presentes no schema). stripeSessionId é adicionado quando a coluna existir.
+    const base = {
       name: paid.name,
       whatsapp: paid.whatsapp,
       package: paid.package,
@@ -33,21 +34,30 @@ export async function POST(req: Request) {
       temperature: "quente",
       stage: "ganho",
       message: `Pagamento ${paid.modo || ""} confirmado via ${paid.source}.`,
-      stripeSessionId: paid.sessionId || null,
     };
     try {
       if (hasDb()) {
         const db = getDb();
-        // Idempotência: ignora se já gravamos este checkout (replay do webhook).
+        // Idempotência (best-effort): ignora replay se a coluna stripe_session_id existir.
         if (paid.sessionId) {
-          const [existing] = await db
-            .select()
-            .from(leads)
-            .where(eq(leads.stripeSessionId, paid.sessionId))
-            .limit(1);
-          if (existing) return NextResponse.json({ received: true, duplicate: true });
+          try {
+            const [existing] = await db
+              .select()
+              .from(leads)
+              .where(eq(leads.stripeSessionId, paid.sessionId))
+              .limit(1);
+            if (existing) return NextResponse.json({ received: true, duplicate: true });
+          } catch (e) {
+            console.warn("[stripe-webhook] dedup indisponível (coluna ausente?):", (e as Error).message);
+          }
         }
-        const [ins] = await db.insert(leads).values(row).returning();
+        // Insert resiliente: tenta com stripeSessionId; se a coluna não existir, grava sem ele.
+        let ins: Lead;
+        try {
+          [ins] = await db.insert(leads).values({ ...base, stripeSessionId: paid.sessionId || null }).returning();
+        } catch {
+          [ins] = await db.insert(leads).values(base).returning();
+        }
         await db.insert(leadActivities).values({
           leadId: ins.id,
           type: "pagamento",

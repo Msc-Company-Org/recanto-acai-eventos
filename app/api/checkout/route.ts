@@ -2,6 +2,7 @@ import { NextResponse } from "next/server";
 import { valorReserva } from "@/lib/pricing";
 import { parseCheckoutInput, buildSuccessUrl, safeOrigin } from "@/lib/checkout";
 import { safeJson } from "@/lib/http";
+import { clientKey, rateLimit } from "@/lib/rateLimit";
 
 // Price IDs do catálogo Stripe (criados via API; não são segredos).
 const PRICES: Record<string, Record<string, string>> = {
@@ -11,6 +12,9 @@ const PRICES: Record<string, Record<string, string>> = {
 
 export async function POST(req: Request) {
   try {
+    if (!rateLimit(clientKey(req, "checkout"), 20, 60_000).ok) {
+      return NextResponse.json({ error: "muitas requisições, tente em instantes" }, { status: 429 });
+    }
     const input = await safeJson(req);
     if (input === null) {
       return NextResponse.json({ error: "JSON inválido" }, { status: 400 });

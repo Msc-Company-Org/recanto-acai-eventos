@@ -48,6 +48,13 @@ Rotas e funções com efeito colateral viraram **cascas finas** sobre helpers pu
 2. Crie `lib/<modulo>.test.ts` com `import { describe, it, expect } from "vitest"`.
 3. Rode `pnpm test`.
 
-## Migração pendente
-A coluna `stripe_session_id` (dedup do webhook) foi adicionada em `lib/schema.ts`. Aplicar no banco
-quando o `DATABASE_URL` estiver conectado: `pnpm drizzle-kit push` (ou gerar migração).
+## Migração: coluna `stripe_session_id` (dedup do webhook)
+O webhook é **resiliente**: funciona com ou sem a coluna (a deduplicação só ativa quando ela existir;
+sem ela, grava o lead normalmente). Para **ativar o dedup**, adicione a coluna no banco (aditivo, não
+destrutivo):
+
+```sql
+ALTER TABLE leads ADD COLUMN IF NOT EXISTS stripe_session_id text;
+```
+
+ou via drizzle: `DATABASE_URL=... pnpm drizzle-kit push` (config em `drizzle.config.ts`).
