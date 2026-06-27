@@ -3,6 +3,7 @@
 import { useMemo, useState } from "react";
 import { packages, eventTypes } from "@/lib/content";
 import { brl, waLink } from "@/lib/utils";
+import { track, EVENTS } from "@/lib/tracking";
 import { WhatsappIcon } from "./primitives";
 
 type FormState = {
@@ -61,6 +62,13 @@ export function QuoteForm() {
 
   function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
+    // Conversão principal (Lead) — value/currency p/ otimização de campanha.
+    track(EVENTS.ENVIO_FORMULARIO, {
+      value: total,
+      currency: "BRL",
+      tipo: form.tipo,
+      pacote: pkg.name,
+    });
     // Registro best-effort — não bloqueia o WhatsApp (lead principal vai pelo wa.me).
     fetch("/api/lead", {
       method: "POST",
@@ -71,7 +79,7 @@ export function QuoteForm() {
   }
 
   return (
-    <section id="orcamento" className="py-20 md:py-28 bg-bg-soft">
+    <section id="orcamento" className="py-14 md:py-28">
       <div className="mx-auto max-w-2xl px-6">
         <div className="glass-strong rounded-3xl p-8 sm:p-10">
           <h2 className="font-display text-3xl font-bold text-ink text-center">
@@ -141,11 +149,14 @@ export function QuoteForm() {
                   <button
                     type="button"
                     key={o.id}
-                    onClick={() => set("pacote", o.id)}
+                    onClick={() => {
+                      set("pacote", o.id);
+                      track(EVENTS.SELECAO_PACOTE, { pacote: o.name });
+                    }}
                     className={`rounded-xl border p-4 text-left transition-all ${
                       form.pacote === o.id
-                        ? "border-gold bg-gold/10"
-                        : "border-line bg-bg/40 hover:border-primary"
+                        ? "border-gold bg-gold/10 shadow-[0_0_0_3px_rgba(212,160,23,0.18)] -translate-y-0.5"
+                        : "border-line bg-bg/40 hover:border-primary hover:bg-primary/5"
                     }`}
                   >
                     <div className="font-semibold text-ink">{o.name}</div>

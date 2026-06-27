@@ -4,10 +4,10 @@ import { SectionTitle } from "./primitives";
 
 export function Gallery() {
   return (
-    <section id="galeria" className="py-20 md:py-28 bg-bg-soft">
+    <section id="galeria" className="py-14 md:py-28 bg-bg-soft">
       <div className="mx-auto max-w-6xl px-6">
         <SectionTitle eyebrow="Galeria" title={gallery.title} subtitle={gallery.subtitle} />
-        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 gap-4 mt-8 md:mt-12">
           {gallery.items.map((item) => (
             <figure
               key={item.src}

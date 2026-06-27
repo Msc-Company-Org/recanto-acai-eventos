@@ -1,14 +1,25 @@
 import type { Metadata } from "next";
+import Link from "next/link";
 import { waLink } from "@/lib/utils";
+import { TrackReserva } from "@/components/TrackReserva";
 
 export const metadata: Metadata = {
   title: "Reserva recebida · Recanto do Açaí Eventos",
   robots: { index: false },
 };
 
-export default function Obrigado() {
+export default async function Obrigado({
+  searchParams,
+}: {
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
+}) {
+  const sp = await searchParams;
+  const valor = Number(sp.valor) || undefined;
+  const sessionId = typeof sp.session_id === "string" ? sp.session_id : undefined;
+
   return (
     <main className="min-h-screen flex items-center justify-center px-6 bg-radial-glow">
+      <TrackReserva value={valor} transactionId={sessionId} />
       <div className="glass-strong rounded-3xl p-10 md:p-14 max-w-md text-center">
         <div className="text-5xl mb-4">💜</div>
         <h1 className="font-display text-3xl font-bold text-ink">Reserva recebida!</h1>
@@ -27,9 +38,9 @@ export default function Obrigado() {
           Confirmar no WhatsApp
         </a>
         <div className="mt-4">
-          <a href="/" className="text-sm text-muted hover:text-primary transition-colors">
+          <Link href="/" className="text-sm text-muted hover:text-primary transition-colors">
             Voltar ao site
-          </a>
+          </Link>
         </div>
       </div>
     </main>

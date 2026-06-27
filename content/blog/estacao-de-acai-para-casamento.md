@@ -1,36 +1,39 @@
 ---
 title: "Estação de açaí e sorvete para casamento: como funciona no RJ"
-description: "Surpreenda os convidados com uma estação de açaí e sorvete gourmet no casamento. Veja como funciona, o que inclui e os pacotes no Rio de Janeiro."
+description: "Surpreenda os convidados com uma estação de açaí e cremes gourmet no seu casamento. Veja como funciona, o que inclui e os pacotes no Rio de Janeiro."
 date: 2026-06-19
 category: Eventos
-excerpt: "Como funciona a estação de açaí e sorvete gourmet no casamento, o que inclui e quanto custa no Rio."
+excerpt: "Descubra como funciona a estação de açaí e cremes gourmet para casamentos no Rio de Janeiro, o que está incluso e os pacotes especiais."
 readingTime: 4 min
+cover: /images/eventos/equipe-recanto-evento.jpg
+coverAlt: "Equipe uniformizada do Recanto do Açaí servindo a estação em um casamento no RJ"
+keywords: "estação de açaí para casamento, açaí para casamento, buffet de açaí casamento RJ"
 ---
 
-## A atração que vira o ponto alto da festa
+## A atração que vira o ponto alto da recepção
 
-Entre o jantar e a balada, os convidados amam uma **estação gourmet de açaí e sorvete**: refrescante, bonita e diferente do bem-casado de sempre. É a atração que rende fotos e fica na memória do casamento.
+No calor da pista de dança ou logo após o jantar principal, a **estação gourmet de açaí e cremes premium** surge como o atrativo perfeito: uma opção leve, refrescante e muito mais dinâmica que a mesa de doces tradicional. É a atração que reúne os convidados, rende fotos espontâneas incríveis e marca a memória da celebração.
 
 ## Combina com casamento de dia, brunch ou à noite
 
-Funciona em qualquer formato — cerimônia ao ar livre, brunch ou recepção à noite. Nossa equipe serve na hora, e a estação se encaixa na decoração que você (ou sua decoradora) montar.
+Nosso serviço adapta-se com perfeição a qualquer formato — desde cerimônias integradas à natureza ao ar livre e brunches sofisticados a grandes recepções noturnas. Enquanto nossa equipe cuida do atendimento de forma impecável, a estrutura da estação é integrada com elegância ao design e decoração do seu evento.
 
-## O que está incluso
+## O que está incluso na experiência
 
-- Açaí e/ou sorvete **premium**, cremosos de verdade
-- Mesa de acompanhamentos: frutas, granola, cremes, caldas e crocantes (+15 itens)
-- **Equipe uniformizada servindo na hora** durante o evento
-- Insumos e logística — você cuida da decoração; a gente leva o sabor e o serviço
+- **Açaí & Cremes Especiais:** Textura ultra cremosa e livre de cristais de gelo, feita com insumos de alta qualidade.
+- **Mesa de Toppings Premium:** Mais de 15 acompanhamentos liberados, incluindo frutas frescas selecionadas e marcas líderes.
+- **Atendimento Exclusivo:** Atendentes uniformizados e treinados para servir cada convidado com simpatia e agilidade.
+- **Logística Completa:** Cuidamos de todo o transporte, montagem e desmontagem, garantindo zero preocupação para os noivos.
 
-## Pacotes
+## Pacotes Disponíveis
 
-- 🍇 **Açaí ou Sorvete** — R$ 1.490
-- ⭐ **Combo Açaí + Sorvete** — R$ 1.690 (o mais escolhido)
+- 🍇 **Açaí ou Creme Gourmet** — R$ 1.490
+- ⭐ **Combo Duplo (Açaí + Creme Gourmet)** — R$ 1.690 (A escolha mais inteligente)
 
-Por só R$ 200 a mais, o combo agrada quem ama açaí e quem prefere sorvete. Sabores extras a partir de R$ 250. Veja todos os valores em [quanto custa uma estação de açaí para festa](/blog/quanto-custa-estacao-de-acai-para-festa).
+Por uma diferença de apenas R$ 200, o combo garante o agrado de 100% dos convidados — servindo desde os apaixonados por açaí até aqueles que preferem cremes tradicionais. Veja todos os detalhes e adicionais em [quanto custa uma estação de açaí para festa](/blog/quanto-custa-estacao-de-acai-para-festa).
 
 ## Como reservar a sua data
 
-Atendemos o Rio e região. As datas de alta temporada esgotam rápido — quanto antes fechar, mais garantida fica a sua.
+Atendemos a cidade do Rio de Janeiro e região metropolitana. Como o calendário de casamentos costuma ser reservado com bastante antecedência, recomendamos garantir a sua vaga o quanto antes.
 
-> Conte a data e o local do casamento pelo [WhatsApp](https://wa.me/5521981749450) e receba um orçamento sem compromisso.
+> Fale conosco pelo [WhatsApp](https://wa.me/5521981749450) informando a data e o local da sua cerimônia para receber uma proposta personalizada sem compromisso.

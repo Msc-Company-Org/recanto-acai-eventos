@@ -5,9 +5,10 @@ export function waLink(message: string): string {
   return `https://wa.me/${site.whatsapp}?text=${encodeURIComponent(message)}`;
 }
 
-/** Formata um número como Real brasileiro, sem centavos. */
+/** Formata um número como Real brasileiro, sem centavos. Valores não-finitos viram 0. */
 export function brl(value: number): string {
-  return value.toLocaleString("pt-BR", {
+  const safe = Number.isFinite(value) ? value : 0;
+  return safe.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
     minimumFractionDigits: 0,

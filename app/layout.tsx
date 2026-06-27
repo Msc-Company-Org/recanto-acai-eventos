@@ -1,8 +1,11 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Fraunces, Outfit } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/content";
 import { Analytics } from "@/components/Analytics";
+import { TrackingListener } from "@/components/TrackingListener";
+import { ScrollReveal } from "@/components/ScrollReveal";
+import { JsonLd } from "@/components/JsonLd";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -19,8 +22,7 @@ const outfit = Outfit({
 
 export const metadata: Metadata = {
   metadataBase: new URL(site.url),
-  title:
-    "Recanto do Açaí · Estações — Açaí & Sorvete Gourmet para Eventos | Zona Norte RJ",
+  title: "Estação de Açaí para Eventos no RJ | Recanto do Açaí",
   description:
     "Estação de açaí e sorvete gourmet servida na hora pela nossa equipe — para casamentos, 15 anos, aniversários e qualquer celebração no Rio. Peça seu orçamento no WhatsApp.",
   keywords: [
@@ -43,16 +45,22 @@ export const metadata: Metadata = {
     siteName: "Recanto do Açaí · Estações",
     locale: "pt_BR",
     type: "website",
+    // og:image (1200×630) é gerado por app/opengraph-image.tsx.
   },
   twitter: {
     card: "summary_large_image",
     title: "Recanto do Açaí · Estações",
     description: "Açaí & sorvete gourmet para eventos no Rio de Janeiro.",
+    // twitter:image é gerado por app/twitter-image.tsx.
   },
   alternates: { canonical: site.url },
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
     : undefined,
+};
+
+export const viewport: Viewport = {
+  themeColor: "#7c1fd6",
 };
 
 export default function RootLayout({
@@ -71,7 +79,10 @@ export default function RootLayout({
           />
         </noscript>
         {children}
+        <JsonLd />
         <Analytics />
+        <TrackingListener />
+        <ScrollReveal />
       </body>
     </html>
   );

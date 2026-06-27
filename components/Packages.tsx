@@ -6,15 +6,21 @@ import { Check, Plus } from "lucide-react";
 
 export function Packages() {
   return (
-    <section id="pacotes" className="py-20 md:py-28">
+    <section id="pacotes" className="py-14 md:py-28 bg-bg-soft">
       <div className="mx-auto max-w-6xl px-6">
         <SectionTitle eyebrow="Pacotes" title={packages.title} subtitle={packages.subtitle} />
 
-        <div className="grid md:grid-cols-2 gap-6 mt-12 max-w-4xl mx-auto">
+        <div className="flex justify-center mt-6">
+          <span className="inline-flex items-center glass rounded-full px-4 py-1.5 text-xs font-bold text-gold">
+            {packages.scarcity}
+          </span>
+        </div>
+
+        <div className="grid md:grid-cols-2 gap-6 mt-6 md:mt-8 max-w-4xl mx-auto">
           {packages.options.map((pkg) => (
             <div
               key={pkg.id}
-              className={`relative rounded-3xl p-8 flex flex-col ${
+              className={`relative rounded-3xl p-8 flex flex-col card-3d ${
                 pkg.highlighted ? "glass-strong border-gold/50 shadow-gold" : "glass"
               }`}
             >
@@ -35,14 +41,15 @@ export function Packages() {
                   </li>
                 ))}
               </ul>
-              <WhatsAppCTA
-                message={`Olá, Recanto! 🍇 Tenho interesse no pacote ${pkg.name} (${brl(pkg.price)}) para o meu evento. Pode me passar os detalhes?`}
-                variant={pkg.highlighted ? "gold" : "primary"}
-                className="mt-7 w-full"
-              >
-                <WhatsappIcon className="w-4 h-4" /> {pkg.cta}
-              </WhatsAppCTA>
               <ReservarOnline pacote={pkg.id} />
+              <WhatsAppCTA
+                message={`Olá, Recanto! 🍇 Tenho uma dúvida sobre o pacote ${pkg.name} (${brl(pkg.price)}) para o meu evento.`}
+                variant="outline"
+                cta={`pacote-duvida-${pkg.id}`}
+                className="mt-3 w-full !py-2.5 text-sm"
+              >
+                <WhatsappIcon className="w-4 h-4" /> Tirar dúvida no WhatsApp
+              </WhatsAppCTA>
             </div>
           ))}
         </div>

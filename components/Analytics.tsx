@@ -7,6 +7,7 @@ import Script from "next/script";
  * Env (Vercel): NEXT_PUBLIC_GTM_ID, NEXT_PUBLIC_GA_ID (G-XXXX), NEXT_PUBLIC_META_PIXEL_ID.
  */
 const GTM_ID = process.env.NEXT_PUBLIC_GTM_ID || "GTM-K5DK33L3";
+const ADS_ID = process.env.NEXT_PUBLIC_GOOGLE_ADS_ID || "AW-17856564369"; // tag do Google Ads (conversões)
 
 export function Analytics() {
   const ga = process.env.NEXT_PUBLIC_GA_ID;
@@ -33,7 +34,8 @@ j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
             {`window.dataLayer = window.dataLayer || [];
 function gtag(){dataLayer.push(arguments);}
 gtag('js', new Date());
-gtag('config', '${ga}');`}
+gtag('config', '${ga}');
+gtag('config', '${ADS_ID}');`}
           </Script>
         </>
       )}

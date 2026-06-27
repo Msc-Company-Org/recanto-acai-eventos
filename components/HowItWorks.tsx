@@ -3,12 +3,15 @@ import { SectionTitle } from "./primitives";
 
 export function HowItWorks() {
   return (
-    <section id="como-funciona" className="py-20 md:py-28 bg-bg-soft">
+    <section id="como-funciona" className="py-14 md:py-28">
       <div className="mx-auto max-w-6xl px-6">
         <SectionTitle eyebrow="Passo a passo" title={howItWorks.title} subtitle={howItWorks.subtitle} />
-        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-12">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mt-8 md:mt-12">
           {howItWorks.steps.map((step) => (
-            <div key={step.n} className="glass rounded-2xl p-7">
+            <div
+              key={step.n}
+              className="glass rounded-2xl p-7 card-3d"
+            >
               <span className="font-display text-5xl font-bold text-primary/40">{step.n}</span>
               <h3 className="font-display text-xl font-bold text-ink mt-2">{step.title}</h3>
               <p className="text-muted mt-2 text-sm leading-relaxed">{step.desc}</p>

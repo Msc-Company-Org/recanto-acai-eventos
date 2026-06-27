@@ -9,14 +9,19 @@ export function Faq() {
   const [open, setOpen] = useState<number | null>(0);
 
   return (
-    <section id="faq" className="py-20 md:py-28">
+    <section id="faq" className="py-14 md:py-28">
       <div className="mx-auto max-w-3xl px-6">
         <SectionTitle title={faq.title} />
-        <div className="mt-12 space-y-3">
+        <div className="mt-8 md:mt-12 space-y-3">
           {faq.items.map((item, i) => {
             const isOpen = open === i;
             return (
-              <div key={item.q} className="glass rounded-2xl overflow-hidden">
+              <div
+                key={item.q}
+                className={`glass rounded-2xl overflow-hidden transition-shadow ${
+                  isOpen ? "ring-1 ring-gold/40 shadow-glow" : ""
+                }`}
+              >
                 <button
                   type="button"
                   onClick={() => setOpen(isOpen ? null : i)}

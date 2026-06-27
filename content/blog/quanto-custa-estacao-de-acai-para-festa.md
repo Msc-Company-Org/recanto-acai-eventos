@@ -1,41 +1,46 @@
 ---
 title: "Quanto custa uma estação de açaí para festa no RJ?"
-description: "Veja quanto custa uma estação de açaí e sorvete para festa no Rio: pacotes, o que está incluso e como contratar para o seu evento."
+description: "Veja o valor do investimento para contratar uma estação de açaí e cremes gourmet para festas no Rio: pacotes, inclusos e opcionais."
 date: 2026-06-17
 category: Eventos
-excerpt: "Pacotes, o que está incluso e como contratar a estação de açaí e sorvete para o seu evento no RJ."
+excerpt: "Compare nossos pacotes de estação de açaí e cremes, conheça o que está incluso no serviço e solicite seu orçamento para eventos no Rio."
 readingTime: 5 min
+cover: /images/produtos/acai-cremoso-colher.jpg
+coverAlt: "Açaí cremoso premium servido na hora em uma estação de açaí para festa no RJ"
+keywords: "quanto custa estação de açaí, preço estação de açaí para festa, açaí para eventos RJ valor"
 ---
 
-## O que é uma estação de açaí para festa
+## O que é a experiência de uma estação de açaí em eventos
 
-A estação de açaí é um serviço gourmet no seu evento: açaí e/ou sorvete premium, uma mesa de acompanhamentos e **equipe uniformizada servindo os convidados na hora**. Você curte a festa e cuida da decoração; a gente leva o sabor e o serviço.
+A estação de açaí é um serviço de gastronomia gourmet integrado ao seu evento: fornecemos açaí e cremes gourmet de textura impecável, montamos uma mesa com mais de 15 toppings liberados e escalamos uma **equipe treinada e uniformizada para servir seus convidados na hora**. Você cuida dos detalhes de ambientação do espaço; nós entregamos sabor, estrutura e excelência em atendimento.
 
-## Quanto custa: nossos pacotes
+## Quanto custa: nossos pacotes principais
 
-| Pacote | O que leva | Valor |
+| Pacote | O que está incluso | Investimento |
 |---|---|---|
-| **Açaí ou Sorvete** | um dos dois, à sua escolha | **R$ 1.490** |
-| **Combo Açaí + Sorvete** ⭐ | os dois — o mais escolhido | **R$ 1.690** |
+| **Açaí ou Creme Gourmet** | Um sabor à sua escolha, acompanhado da mesa de toppings | **R$ 1.490** |
+| **Combo Duplo (Açaí + Creme)** ⭐ | Açaí premium E creme gourmet servidos simultaneamente | **R$ 1.690** |
 
-Por apenas R$ 200 a mais que o pacote único, o **combo** leva açaí E sorvete e agrada todo mundo.
+Por um acréscimo de apenas R$ 200 em relação ao pacote individual, o **Combo Duplo** se consagra como o mais requisitado: ele atende com perfeição tanto a quem ama açaí quanto a quem prefere uma sobremesa cremosa tradicional.
 
-## Sabores extras
+## Opcionais para personalizar sua estação
 
-- Sabor adicional **premium**: + R$ 350
-- Sabor adicional **normal**: + R$ 250
+Deseja enriquecer ainda mais o menu da sua festa? Oferecemos a inclusão de sabores adicionais:
 
-## O que está incluso
+- **Sabor adicional Premium** (cremes especiais de alta procura): + R$ 350
+- **Sabor adicional Tradicional** (sabores clássicos de cremes): + R$ 250
 
-- Açaí e/ou sorvete premium, cremosos
-- Mesa com +15 acompanhamentos (frutas, granola, leite em pó, cremes, caldas, crocantes…)
-- Equipe uniformizada servindo na hora
-- Insumos e logística
+## O que está incluso no seu investimento
 
-> A decoração da mesa fica por sua conta (ou da sua decoradora) — assim você personaliza do jeito que sonhou, e a gente garante o sabor e o atendimento.
+- **Matéria-prima de alta qualidade:** Açaí e cremes ultra cremosos, livres de cristais de gelo.
+- **Mesa de Toppings Premium:** Mais de 15 acompanhamentos (incluindo morango e banana frescos cortados no dia, leite Ninho, granola crocante, calda de chocolate, creme de avelã e confeitos).
+- **Serviço de Atendimento:** Profissionais uniformizados cuidando do preparo e entrega dos copos durante todo o período contratado.
+- **Logística completa:** Transporte, montagem e desmontagem da estrutura técnica da estação.
 
-## Como contratar
+> **Importante:** A decoração visual da mesa (peças temáticas, flores, luzes) fica sob a coordenação do anfitrião ou da decoradora contratada. Dessa forma, a estação se encaixa perfeitamente no estilo visual definido para o seu grande dia.
 
-Atendemos o Rio de Janeiro e região. Informe a data, o tipo de evento e o número de convidados que montamos seu orçamento.
+## Como solicitar sua proposta
 
-> Peça um orçamento sem compromisso pelo nosso [WhatsApp](https://wa.me/5521981749450).
+Atendemos com exclusividade a cidade do Rio de Janeiro e região metropolitana. Para receber uma proposta personalizada, basta ter em mãos a data prevista, o local do evento e a estimativa de público.
+
+> Receba um orçamento detalhado e sem compromisso conversando diretamente com a nossa equipe no [WhatsApp](https://wa.me/5521981749450).

@@ -1,4 +1,5 @@
 import Link from "next/link";
+import Image from "next/image";
 import type { Metadata } from "next";
 import { getAllPosts } from "@/lib/blog";
 import { Header } from "@/components/Header";
@@ -26,18 +27,31 @@ export default function BlogIndex() {
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
-                className="block glass rounded-2xl p-6 hover:border-gold/40 transition-all"
+                className="block glass rounded-2xl overflow-hidden card-3d"
               >
-                {post.category && (
-                  <span className="text-xs font-semibold text-gold uppercase tracking-wider">
-                    {post.category}
-                  </span>
+                {post.cover && (
+                  <div className="relative aspect-[16/9] overflow-hidden">
+                    <Image
+                      src={post.cover}
+                      alt={post.coverAlt || post.title}
+                      fill
+                      sizes="(max-width: 768px) 100vw, 720px"
+                      className="object-cover"
+                    />
+                  </div>
                 )}
-                <h2 className="font-display text-xl font-bold text-white mt-1">{post.title}</h2>
-                <p className="text-muted text-sm mt-2">{post.excerpt}</p>
-                <span className="inline-flex items-center gap-1 text-gold text-sm mt-3">
-                  Ler mais <ArrowRight className="w-4 h-4" />
-                </span>
+                <div className="p-6">
+                  {post.category && (
+                    <span className="text-xs font-semibold text-gold uppercase tracking-wider">
+                      {post.category}
+                    </span>
+                  )}
+                  <h2 className="font-display text-xl font-bold text-ink mt-1">{post.title}</h2>
+                  <p className="text-muted text-sm mt-2">{post.excerpt}</p>
+                  <span className="inline-flex items-center gap-1 text-gold text-sm mt-3">
+                    Ler mais <ArrowRight className="w-4 h-4" />
+                  </span>
+                </div>
               </Link>
             ))}
           </div>

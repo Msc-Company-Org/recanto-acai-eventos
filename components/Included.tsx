@@ -4,19 +4,22 @@ import { SectionTitle } from "./primitives";
 
 export function Included() {
   return (
-    <section id="inclui" className="py-20 md:py-28">
+    <section id="inclui" className="py-14 md:py-28 bg-bg-soft">
       <div className="mx-auto max-w-6xl px-6">
         <SectionTitle eyebrow="No pacote" title={included.title} subtitle={included.subtitle} />
-        <div className="grid sm:grid-cols-2 gap-6 mt-12">
+        <div className="grid sm:grid-cols-2 gap-6 mt-8 md:mt-12">
           {included.items.map((item) => (
-            <div key={item.title} className="glass rounded-2xl overflow-hidden">
-              <div className="relative h-48 w-full">
+            <div
+              key={item.title}
+              className="group glass rounded-2xl overflow-hidden card-3d"
+            >
+              <div className="relative h-48 w-full overflow-hidden">
                 <Image
                   src={item.img}
-                  alt={item.title}
+                  alt={`${item.title} — estação de açaí para eventos no Rio de Janeiro`}
                   fill
                   sizes="(max-width: 640px) 100vw, 50vw"
-                  className="object-cover"
+                  className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
               </div>
               <div className="p-6">

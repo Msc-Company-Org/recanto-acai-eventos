@@ -104,9 +104,51 @@ body {
 }
 .animate-pulse-soft { animation: pulse-soft 2.4s ease-in-out infinite; }
 
+/* ---------- Reveal ao rolar — cada seção "entra" (transição + opacidade) ---------- */
+/* .js-anim só é adicionado via JS; sem JS tudo fica visível (à prova de falha). */
+.js-anim main > section:not(:first-child) {
+  opacity: 0;
+  transform: translateY(34px);
+  transition: opacity 0.7s ease, transform 0.7s cubic-bezier(0.22, 1, 0.36, 1);
+  will-change: opacity, transform;
+}
+.js-anim main > section.is-visible {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .js-anim main > section:not(:first-child) { opacity: 1; transform: none; transition: none; }
+}
+
+/* ---------- CTA com vida (chama atenção, leve) ---------- */
+@keyframes cta-breathe {
+  0%, 100% { box-shadow: 0 16px 40px -20px rgba(212, 160, 23, 0.5); transform: scale(1); }
+  50%      { box-shadow: 0 22px 56px -16px rgba(212, 160, 23, 0.85); transform: scale(1.02); }
+}
+.cta-attention { animation: cta-breathe 3s ease-in-out infinite; }
+
+/* ---------- Cards com profundidade 3D + "acende" ao hover ---------- */
+.card-3d {
+  transition: transform 0.35s cubic-bezier(0.22, 1, 0.36, 1), box-shadow 0.35s ease, border-color 0.35s ease;
+  will-change: transform;
+}
+.card-3d:hover {
+  transform: translateY(-6px) scale(1.015);
+  box-shadow: 0 30px 64px -26px rgba(124, 31, 214, 0.5);
+  border-color: rgba(124, 31, 214, 0.38);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .cta-attention { animation: none; }
+  .card-3d:hover { transform: none; }
+}
+
 /* ---------- Conteúdo do blog (markdown renderizado) ---------- */
 .prose-recanto { color: var(--color-muted); line-height: 1.8; }
 .prose-recanto h2 { font-family: var(--font-display), serif; color: var(--color-ink); font-size: 1.5rem; font-weight: 700; margin: 2rem 0 0.75rem; }
+.prose-recanto h3 { font-family: var(--font-display), serif; color: var(--color-ink); font-size: 1.2rem; font-weight: 700; margin: 1.5rem 0 0.5rem; }
+.prose-recanto img { width: 100%; border-radius: 0.75rem; margin: 1.75rem 0; box-shadow: 0 14px 44px -20px rgba(124, 31, 214, 0.32); }
+.prose-recanto figcaption { text-align: center; font-size: 0.85rem; color: var(--color-muted); margin-top: -1rem; margin-bottom: 1.75rem; }
 .prose-recanto p { margin: 0.85rem 0; }
 .prose-recanto ul { list-style: disc; padding-left: 1.5rem; margin: 0.85rem 0; }
 .prose-recanto li { margin: 0.35rem 0; }
