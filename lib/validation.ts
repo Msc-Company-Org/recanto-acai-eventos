@@ -3,10 +3,12 @@ import { z } from "zod";
 const pkg = z.enum(["unico", "combo"]);
 const modo = z.enum(["sinal", "total"]);
 
-/** Entrada do checkout — valores inválidos caem no padrão (combo/total). */
 export const CheckoutSchema = z.object({
   pacote: pkg.catch("combo"),
   modo: modo.catch("total"),
+  extraPremium: z.coerce.number().int().min(0).max(50).catch(0),
+  extraNormal: z.coerce.number().int().min(0).max(50).catch(0),
+  frete: z.coerce.number().min(0).max(10000).catch(0),
 });
 export type CheckoutInput = z.infer<typeof CheckoutSchema>;
 

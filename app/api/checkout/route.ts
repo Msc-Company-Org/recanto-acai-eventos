@@ -4,12 +4,6 @@ import { parseCheckoutInput, buildSuccessUrl, safeOrigin } from "@/lib/checkout"
 import { safeJson } from "@/lib/http";
 import { clientKey, rateLimit } from "@/lib/rateLimit";
 
-// Price IDs do catálogo Stripe (criados via API; não são segredos).
-const PRICES: Record<string, Record<string, string>> = {
-  unico: { total: "price_1Tk6BbIglSfdwnhTkM0fEGEN", sinal: "price_1Tk6BcIglSfdwnhTZeh6KxsI" },
-  combo: { total: "price_1Tk6BeIglSfdwnhT85BxtYMM", sinal: "price_1Tk6BeIglSfdwnhTnsNy6nic" },
-};
-
 export async function POST(req: Request) {
   try {
     if (!rateLimit(clientKey(req, "checkout"), 20, 60_000).ok) {
@@ -19,20 +13,42 @@ export async function POST(req: Request) {
     if (input === null) {
       return NextResponse.json({ error: "JSON inválido" }, { status: 400 });
     }
-    const { pacote, modo } = parseCheckoutInput(input);
-    const price = PRICES[pacote][modo];
+    const { pacote, modo, extraPremium, extraNormal, frete } = parseCheckoutInput(input);
 
     const key = process.env.STRIPE_SECRET_KEY;
     if (!key) return NextResponse.json({ error: "pagamento indisponível" }, { status: 500 });
 
     const origin = req.headers.get("origin");
-    const valor = valorReserva(pacote, modo);
+    const o = safeOrigin(origin);
+
+    // Cálculo exato de valores em Reais (R$)
+    const precoBase = pacote === "combo" ? 1690 : 1490;
+    const valorAdicionais = (extraPremium * 350) + (extraNormal * 250);
+    const totalContratacao = precoBase + valorAdicionais + frete;
+    const valorCobrado = modo === "sinal" ? totalContratacao / 2 : totalContratacao;
+
+    // Detalhes do Produto
+    const nomeProduto = pacote === "combo"
+      ? "Estação Gourmet - Combo (Açaí + Sorvete)"
+      : "Estação Gourmet - Pacote Único (Açaí ou Sorvete)";
+
+    const descricaoCobrança = modo === "sinal"
+      ? `Sinal de 50% para garantir a exclusividade da sua data na agenda do Recanto do Açaí. Saldo restante de ${modo === "sinal" ? (totalContratacao / 2).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' }) : 'R$ 0,00'} a pagar no dia do evento.`
+      : `Pagamento integral para a Estação Gourmet do Recanto do Açaí para 120 convidados.`;
+
     const body = new URLSearchParams();
     body.set("mode", "payment");
-    body.set("success_url", buildSuccessUrl(origin, { valor, pacote, modo }));
-    body.set("cancel_url", `${safeOrigin(origin)}/#pacotes`);
-    body.set("line_items[0][price]", price);
+    body.set("success_url", buildSuccessUrl(origin, { valor: valorCobrado, pacote, modo }));
+    body.set("cancel_url", `${o}/#pacotes`);
+    
+    // Injeção dinâmica de Produto + Imagem no Stripe Checkout
+    body.set("line_items[0][price_data][currency]", "brl");
+    body.set("line_items[0][price_data][unit_amount]", Math.round(valorCobrado * 100).toString());
+    body.set("line_items[0][price_data][product_data][name]", nomeProduto);
+    body.set("line_items[0][price_data][product_data][description]", descricaoCobrança);
+    body.set("line_items[0][price_data][product_data][images][0]", `${o}/images/produtos/acai-cremoso-colher.jpg`);
     body.set("line_items[0][quantity]", "1");
+
     body.set("phone_number_collection[enabled]", "true");
     body.set("metadata[pacote]", pacote);
     body.set("metadata[modo]", modo);
