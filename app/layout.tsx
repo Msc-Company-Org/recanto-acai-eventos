@@ -4,6 +4,7 @@ import "./globals.css";
 import { site } from "@/lib/content";
 import { Analytics } from "@/components/Analytics";
 import { JsonLd } from "@/components/JsonLd";
+import { SpeedInsights } from "@vercel/speed-insights/next";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
@@ -67,9 +68,12 @@ export const metadata: Metadata = {
   },
   alternates: { canonical: site.url },
   manifest: "/manifest.webmanifest",
-  verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
-    ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
-    : undefined,
+  verification: {
+    google: [
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION,
+      process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION_2,
+    ].filter(Boolean) as string[],
+  },
 };
 
 export const viewport: Viewport = {
@@ -108,6 +112,7 @@ export default function RootLayout({
         {children}
         <JsonLd />
         <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );
