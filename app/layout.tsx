@@ -24,7 +24,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: "Estação de Açaí para Eventos no RJ | Recanto do Açaí",
   description:
-    "Estação de açaí e sorvete gourmet servida na hora pela nossa equipe — para casamentos, 15 anos, aniversários e qualquer celebração no Rio. Peça seu orçamento no WhatsApp.",
+    "Estação de açaí e sorvete gourmet servida na hora. Reserve e garanta sua data online com sinal de 50% facilitado no cartão ou Pix para casamentos, 15 anos e aniversários no RJ.",
   keywords: [
     "açaí para eventos",
     "estação de açaí",
