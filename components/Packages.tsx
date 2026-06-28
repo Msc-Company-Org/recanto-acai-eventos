@@ -34,14 +34,14 @@ export function Packages() {
               <div className="mt-5 mb-6">
                 <span className="text-xs text-muted block font-semibold uppercase tracking-wider">A partir de</span>
                 <div className="flex items-baseline gap-1">
-                  <span className="text-sm font-semibold text-ink">3x de</span>
+                  <span className="text-sm font-semibold text-ink">6x de</span>
                   <span className="font-display text-4xl font-bold text-ink">
-                    {brl(pkg.price / 3)}
+                    {brl(pkg.price / 6)}
                   </span>
                   <span className="text-xs text-[#7c1fd6] font-bold bg-[#7c1fd6]/10 px-1.5 py-0.5 rounded">sem juros</span>
                 </div>
                 <span className="text-xs text-muted block mt-1.5">
-                  ou {brl(pkg.price)} à vista (sinal de 50% de {brl(pkg.price / 2)})
+                  ou {brl(pkg.price)} à vista · Pix com desconto
                 </span>
               </div>
               <ul className="space-y-3 grow">

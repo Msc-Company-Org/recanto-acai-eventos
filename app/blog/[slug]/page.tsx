@@ -6,6 +6,9 @@ import { marked } from "marked";
 import { getAllPosts, getPost } from "@/lib/blog";
 import { Header } from "@/components/Header";
 import { Footer } from "@/components/Footer";
+import { BlogCta } from "@/components/BlogCta";
+import { VideoGallery } from "@/components/VideoGallery";
+import { BlogImageGallery, BlogStickyBar } from "@/components/BlogClientWidgets";
 import { site } from "@/lib/content";
 import { ArrowLeft } from "lucide-react";
 
@@ -46,17 +49,53 @@ export default async function BlogPost({
   const post = getPost(slug);
   if (!post) notFound();
 
-  const html = await marked.parse(post.content);
+  // Split at ~60% for mid-article CTA
+  const mid = Math.floor(post.content.length * 0.60);
+  const splitAt = post.content.indexOf("\n\n", mid);
+  const firstHalf = post.content.slice(0, splitAt !== -1 ? splitAt : mid);
+  const secondHalf = post.content.slice(splitAt !== -1 ? splitAt : mid);
+
+  const [htmlFirst, htmlSecond] = await Promise.all([
+    marked.parse(firstHalf),
+    marked.parse(secondHalf),
+  ]);
+
   const articleLd = {
     "@context": "https://schema.org",
     "@type": "Article",
     headline: post.title,
     description: post.description,
+    keywords: post.keywords,
     datePublished: post.date,
     image: post.cover ? `${site.url}${post.cover}` : undefined,
     author: { "@type": "Organization", name: "Recanto do Açaí" },
     publisher: { "@type": "Organization", name: "Recanto do Açaí" },
     mainEntityOfPage: `${site.url}/blog/${post.slug}`,
+  };
+
+  const breadcrumbLd = {
+    "@context": "https://schema.org",
+    "@type": "BreadcrumbList",
+    itemListElement: [
+      {
+        "@type": "ListItem",
+        position: 1,
+        name: "Início",
+        item: site.url,
+      },
+      {
+        "@type": "ListItem",
+        position: 2,
+        name: "Blog",
+        item: `${site.url}/blog`,
+      },
+      {
+        "@type": "ListItem",
+        position: 3,
+        name: post.title,
+        item: `${site.url}/blog/${post.slug}`,
+      },
+    ],
   };
 
   return (
@@ -65,15 +104,23 @@ export default async function BlogPost({
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(articleLd) }}
       />
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(breadcrumbLd) }}
+      />
       <Header />
-      <main className="pt-32 pb-20 min-h-screen">
+      <main className="pt-32 pb-28 min-h-screen">
         <article className="mx-auto max-w-3xl px-6">
-          <Link
-            href="/blog"
-            className="inline-flex items-center gap-1 text-muted hover:text-gold text-sm transition-colors"
-          >
-            <ArrowLeft className="w-4 h-4" /> Voltar ao blog
-          </Link>
+          {/* Breadcrumb */}
+          <nav aria-label="Navegação">
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-1 text-muted hover:text-gold text-sm transition-colors"
+            >
+              <ArrowLeft className="w-4 h-4" /> Voltar ao blog
+            </Link>
+          </nav>
+
           {post.category && (
             <span className="block text-gold text-sm font-semibold uppercase tracking-wider mt-6">
               {post.category}
@@ -83,6 +130,7 @@ export default async function BlogPost({
             {post.title}
           </h1>
           <div className="divider-gold mt-6" />
+
           {post.cover && (
             <div className="relative w-full aspect-[16/9] mt-8 overflow-hidden rounded-2xl glass shadow-glow">
               <Image
@@ -95,6 +143,7 @@ export default async function BlogPost({
               />
             </div>
           )}
+
           {post.audio && (
             <div className="mt-8 glass rounded-2xl p-5 flex flex-col sm:flex-row sm:items-center gap-3">
               <span className="font-display font-bold text-ink shrink-0">🎧 Ouça este artigo</span>
@@ -103,24 +152,50 @@ export default async function BlogPost({
               </audio>
             </div>
           )}
+
+          {/* Primeira metade do artigo */}
           <div
             className="prose-recanto mt-8"
-            dangerouslySetInnerHTML={{ __html: html }}
+            dangerouslySetInnerHTML={{ __html: htmlFirst }}
           />
-          <div className="mt-12 glass-strong rounded-2xl p-7 text-center">
-            <p className="font-display text-xl text-ink mb-4">
-              Vamos garantir a exclusividade da sua data online?
-            </p>
-            <Link
-              href="/#orcamento"
-              className="inline-flex items-center justify-center gap-2 rounded-full bg-gold text-bg font-bold px-7 py-3.5 hover:bg-gold-soft shadow-gold transition-colors"
-            >
-              Simular Orçamento & Reservar Online 💳
-            </Link>
-          </div>
+
+          {/* CTA inline no meio do artigo */}
+          <BlogCta variant="inline" />
+
+          {/* Segunda metade do artigo */}
+          <div
+            className="prose-recanto"
+            dangerouslySetInnerHTML={{ __html: htmlSecond }}
+          />
+
+          {/* Galeria de vídeos do post (se houver) */}
+          {post.videos && post.videos.length > 0 && (
+            <div className="mt-12">
+              <h2 className="font-display text-2xl font-bold text-ink mb-6">Vídeos do evento</h2>
+              <VideoGallery videos={post.videos} />
+            </div>
+          )}
+
+          {/* CTA final */}
+          <BlogCta variant="end" />
         </article>
+
+        {/* Galeria de imagens */}
+        <section className="mx-auto max-w-5xl px-6 mt-16">
+          <h2 className="font-display text-2xl font-bold text-ink mb-6 text-center">
+            Veja como fica na prática
+          </h2>
+          <BlogImageGallery />
+          <p className="text-center text-muted text-sm mt-4">
+            Clique em qualquer foto para ampliar · {" "}
+            <Link href="/#galeria" className="text-gold hover:underline">
+              Ver mais fotos na página principal
+            </Link>
+          </p>
+        </section>
       </main>
       <Footer />
+      <BlogStickyBar />
     </>
   );
 }

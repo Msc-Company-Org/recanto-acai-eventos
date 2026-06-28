@@ -19,7 +19,7 @@ export const site = {
 } as const;
 
 export const baseService = {
-  durationHours: 3,
+  durationHours: 4,
   guests: 120,
   includedFlavors: 2,
   attendants: 1,
@@ -36,18 +36,19 @@ export const nav = [
 ];
 
 export const hero = {
-  badge: "Casamentos · 15 Anos · Festas Infantis · Corporativos",
-  titleLead: "Torne seu Evento",
-  titleHighlight: "Inesquecível!",
+  badge: "Estação Gourmet · Mais de 100 Eventos no Rio de Janeiro",
+  titleLead: "Estação de Açaí e Sorvete Gourmet para Eventos —",
+  titleHighlight: "Torne seu evento inesquecível",
   subtitle:
-    "Estação de Açaí e Sorvete Completa para dar um toque ainda mais Especial ao seu evento.\n\nSelecione a data e simule o valor para o seu número de convidados direto no calendário abaixo.",
-  ctaPrimary: "Garantir minha data",
+    "Açaí cremoso e sorvete gourmet servidos na hora, com 15+ toppings premium liberados à vontade para todos os seus convidados.\n\nSelecione a data e simule o valor para o seu número de convidados direto no calendário abaixo.",
+  ctaPrimary: "Garantir sua Data",
   ctaSecondary: "Simular orçamento",
   ctaNote: "Garantia de atendimento exclusivo: apenas 1 evento próprio atendido por dia 🔒",
   stats: [
-    { value: "Na hora", label: "Servido fresquinho" },
-    { value: "À vontade", label: "15+ Toppings" },
-    { value: "3x Sem Juros", label: "Pix ou Cartão" },
+    { value: "4 Horas", label: "de evento" },
+    { value: "À vontade", label: "15+ Toppings Premium" },
+    { value: "Até 6x", label: "Sem Juros · Pix ou Cartão" },
+    { value: "100+ Eventos", label: "no Rio de Janeiro" },
   ],
 };
 
@@ -82,64 +83,64 @@ export const howItWorks = {
     },
     {
       n: "03",
-      title: "Confirme com o Sinal",
-      desc: "Pague o sinal de 50% em ambiente seguro via Pix ou Cartão de Crédito (até 3x sem juros) para bloquear a data na nossa agenda oficial na hora.",
+      title: "Confirme o Pagamento",
+      desc: "Pague de forma totalmente segura via Pix ou Cartão de Crédito (até 6x sem juros) para bloquear a data na nossa agenda oficial na hora.",
     },
     {
       n: "04",
       title: "Aproveite a Festa",
-      desc: "Nossa equipe chega com antecedência para montar a estação e servir tudo à vontade. O saldo restante você acerta apenas no dia do evento!",
+      desc: "Nossa Equipe Especializada chega com antecedência, monta a estação em cerca de 25 minutos e serve açaí e sorvete gourmet à vontade durante as 4 Horas de Evento. Você só aproveita!",
     },
   ],
 };
 
 export const included = {
-  title: "Estrutura e serviço gourmet inclusos",
+  title: "Estação Gourmet · Estrutura e serviço inclusos",
   subtitle:
-    "Montagem, equipe e insumos estão no pacote. Você só escolhe onde a estação será montada.",
+    "A Estação Gourmet do Recanto vai até você: montagem, Equipe Especializada e insumos premium no pacote. Você só escolhe onde a estação será montada.",
   items: [
     {
       icon: "IceCream",
       img: "/images/produtos/creme-flocos.jpg",
-      title: "Açaí & Cremes Especiais",
-      desc: "Fórmula ultra cremosa, livre de cristais de gelo e feita com insumos selecionados de alta qualidade.",
+      title: "Açaí & Sorvete Gourmet",
+      desc: "Fórmula ultra cremosa, livre de cristais de gelo e feita com insumos selecionados de alta qualidade — a base da nossa Estação Gourmet.",
     },
     {
       icon: "Utensils",
       img: "/images/estacao/estacao-complementos.jpg",
       title: "Mesa de Toppings Premium",
-      desc: "Acompanhamentos liberados, com frutas cortadas no dia e marcas líderes de mercado.",
+      desc: "Acompanhamentos liberados à vontade, com frutas cortadas no dia e marcas líderes de mercado para uma experiência premium.",
     },
     {
       icon: "UserCheck",
       img: "/images/eventos/equipe-recanto-evento.jpg",
-      title: "Atendimento Profissional",
-      desc: "Atendentes uniformizados e treinados para servir com simpatia, agilidade e total capricho.",
+      title: "Equipe Especializada",
+      desc: "Atendentes uniformizados e treinados para servir a sua Estação Gourmet com simpatia, agilidade e total capricho.",
     },
     {
       icon: "Truck",
       img: "/images/estacao/estacao-atendente-salao.jpg",
       title: "Logística Sob Medida",
-      desc: "Transporte, montagem e desmontagem rápidos e silenciosos. Zero trabalho para o anfitrião.",
+      desc: "Transporte, montagem e desmontagem da Estação Gourmet rápidos e silenciosos. Zero trabalho para o anfitrião.",
     },
   ],
-  note: "Atendimento de aprox. 3h · pensado para até 120 convidados base · 2 sabores inclusos. Precisa de mais? A gente personaliza pra você.",
+  note: "4 Horas de Evento · pensado para até 120 convidados base · 2 sabores inclusos. Precisa de mais? A gente personaliza pra você.",
 };
 
 export const packages = {
-  title: "Opções de Pacotes",
-  subtitle: "Garanta a exclusividade da sua data com 50% de entrada — pagamento online, seguro e imediato. Atendemos apenas 1 evento por data na agenda.",
+  title: "Opções de Pacotes — Estação Gourmet",
+  subtitle: "Garanta a exclusividade da sua data com pagamento online, totalmente seguro e imediato. Atendemos apenas 1 evento por data na agenda.",
   scarcity: "⚡ Reserva imediata — sua data bloqueada na hora",
   options: [
     {
       id: "unico",
       name: "Açaí ou Sorvete",
       price: 1490,
-      tagline: "A escolha clássica para surpreender",
+      tagline: "A escolha clássica da nossa Estação Gourmet",
       features: [
-        "Açaí premium OU creme gourmet (você escolhe)",
-        "Mesa de acompanhamentos liberada",
-        "Equipe uniformizada servindo na hora",
+        "Estação Gourmet de Açaí premium OU Sorvete (você escolhe)",
+        "Mesa de Toppings Premium liberada à vontade",
+        "Equipe Especializada uniformizada servindo na hora",
         "Insumos e logística inclusos",
       ],
       highlighted: false,
@@ -149,12 +150,12 @@ export const packages = {
       id: "combo",
       name: "Açaí + Sorvete",
       price: 1690,
-      tagline: "A experiência completa para seu evento",
+      tagline: "A Estação Gourmet completa para seu evento",
       badge: "Mais escolhido",
       features: [
-        "Açaí premium E creme gourmet — os dois!",
-        "Mesa de acompanhamentos liberada",
-        "Equipe uniformizada servindo na hora",
+        "Estação Gourmet de Açaí premium E Sorvete — os dois!",
+        "Mesa de Toppings Premium liberada à vontade",
+        "Equipe Especializada uniformizada servindo na hora",
         "Insumos e logística inclusos",
         "Agrada quem ama açaí e quem prefere creme gourmet",
       ],
@@ -164,9 +165,9 @@ export const packages = {
   ],
   anchorTitle: "Por que o combo vale mais a pena?",
   anchor:
-    "Por um investimento de apenas R$ 200 a mais, você oferece açaí E sorvete. A melhor escolha para garantir que 100% dos seus convidados saiam satisfeitos.",
+    "Por um investimento de apenas R$ 200 a mais, você leva a Estação Gourmet completa: Açaí E Sorvete. Mais de 70% dos nossos clientes escolhem o combo — a melhor escolha para garantir que 100% dos convidados saiam satisfeitos.",
   addons: {
-    title: "Quer turbinar a mesa?",
+    title: "Quer turbinar a Estação Gourmet?",
     items: [
       { name: "Sabor extra premium", price: 350, desc: "Aquele sabor especial pra impressionar." },
       { name: "Sabor extra normal", price: 250, desc: "Mais variedade pra alegrar os convidados." },
@@ -201,26 +202,26 @@ export const flavors = {
     {
       icon: "Candy",
       title: "Doces & Caldas",
-      items: ["Confetes de Chocolate", "Jujuba", "Leite Condensado", "Calda de Morango", "Calda de Chocolate"],
+      items: ["Nutella", "Leite Ninho", "Confetes de Chocolate", "Jujuba", "Leite Condensado", "Calda de Morango", "Calda de Chocolate"],
     },
   ],
 };
 
 export const differentials = {
-  title: "Por que escolher o Recanto?",
-  subtitle: "O cuidado que faz o convidado voltar na mesa o evento inteiro.",
+  title: "Por que escolher a Estação Gourmet do Recanto?",
+  subtitle: "O cuidado que faz o convidado voltar na mesa o evento inteiro — qualidade indiscutível do primeiro ao último convidado.",
   items: [
     {
       icon: "Award",
       img: "/images/produtos/acai-cremoso-colher.jpg",
-      title: "Qualidade Incomparável",
-      desc: "Fórmula premium ultra cremosa, livre de cristais de gelo. Um sabor marcante do primeiro ao último convidado.",
+      title: "Qualidade Indiscutível",
+      desc: "Fórmula premium ultra cremosa, livre de cristais de gelo. Sabor marcante e qualidade indiscutível do primeiro ao último convidado.",
     },
     {
       icon: "Sparkles",
       img: "/images/estacao/estacao-atendente-salao.jpg",
       title: "Montado na Hora",
-      desc: "Sem potes prontos ou congelados: nossa equipe monta cada taça de forma personalizada na frente do convidado.",
+      desc: "Sem potes prontos ou congelados: nossa Equipe Especializada monta cada taça de forma personalizada na frente do convidado.",
     },
     {
       icon: "HandHeart",
@@ -229,6 +230,22 @@ export const differentials = {
       desc: "Nós transportamos, montamos, servimos e cuidamos da limpeza do espaço. Você só curte a sua comemoração.",
     },
   ],
+};
+
+export const trajetoria = {
+  title: "Mais de 100 Eventos no Rio de Janeiro",
+  subtitle:
+    "Da Zona Norte à Zona Oeste, da Baixada a Niterói — a nossa Estação Gourmet já fez parte de casamentos, 15 anos, festas infantis e eventos corporativos por todo o Rio. A sua é a próxima.",
+  regioes: [
+    "Zona Norte · Guadalupe",
+    "Zona Norte · Marechal Hermes",
+    "Zona Oeste · Barra & Recreio",
+    "Zona Norte · Madureira & Irajá",
+    "Zona Norte · Pavuna & Penha",
+    "Baixada Fluminense",
+    "Niterói",
+  ],
+  cta: "Garantir sua Data",
 };
 
 export const gallery = {
@@ -291,12 +308,12 @@ export const testimonials = {
     {
       name: "Letícia & Bruno",
       event: "Chá revelação · Pavuna",
-      text: "Atendimento nota 10. Combinamos os detalhes finais depois do sinal pago e no dia chegaram cedo pra montar. A mesa de acompanhamentos liberada foi um sucesso.",
+      text: "Atendimento nota 10. Alinhamos os detalhes finais depois da reserva confirmada e no dia chegaram cedo pra montar. A mesa de acompanhamentos liberada foi um sucesso.",
     },
     {
       name: "Anderson Lima",
       event: "Confraternização da empresa · Irajá",
-      text: "Contratamos para o evento de fim de ano. O processo de pagamento do sinal facilitado via Pix e parcelado no cartão gerou muita segurança no financeiro. Qualidade excelente.",
+      text: "Contratamos para o evento de fim de ano. O pagamento integral via Pix (aprovação imediata) e parcelado no cartão gerou muita segurança no financeiro. Qualidade excelente.",
     },
     {
       name: "Fernanda Rocha",
@@ -311,7 +328,7 @@ export const faq = {
   items: [
     {
       q: "Como confirmo a disponibilidade da minha data?",
-      a: "Basta simular o seu orçamento no nosso formulário. Ao avançar, nosso sistema verifica a agenda em tempo real e permite que você trave o seu dia imediatamente com o pagamento do sinal.",
+      a: "Basta simular o seu orçamento no nosso formulário. Ao avançar, nosso sistema verifica a agenda em tempo real e permite que você trave o seu dia imediatamente com o pagamento online.",
     },
     {
       q: "Vocês decoram a mesa?",
@@ -322,8 +339,12 @@ export const faq = {
       a: "Nossos pacotes base atendem com excelência festas de até 120 convidados. Se o seu evento for maior, você pode simular os convidados adicionais diretamente no formulário de orçamento.",
     },
     {
+      q: "Quantas horas dura o serviço?",
+      a: "O atendimento ativo dura 4 horas — tempo mais que suficiente para todos os seus convidados se servirem à vontade. Nossa equipe chega cerca de 25 minutos antes para montar a estação e cuida da desmontagem ao final, em aproximadamente 15 minutos.",
+    },
+    {
       q: "Quais as formas de pagamento e é seguro?",
-      a: "Sim, é 100% seguro e criptografado. Você pode pagar o sinal de 50% em até 3x sem juros no Cartão de Crédito ou via Pix com aprovação imediata para travar a data. O saldo restante de 50% é pago apenas no dia do evento.",
+      a: "Sim, é 100% totalmente seguro. Você pode pagar em até 6x sem juros no Cartão de Crédito ou via Pix com aprovação imediata para travar a data.",
     },
     {
       q: "Atendem qual região?",
@@ -331,7 +352,7 @@ export const faq = {
     },
     {
       q: "O que está incluso no preço?",
-      a: "Equipe uniformizada e treinada, estação completa, insumos premium e toppings liberados à vontade por aproximadamente 3 horas de evento. Sem taxas ocultas.",
+      a: "Equipe uniformizada e treinada, estação completa, insumos premium e toppings liberados à vontade por 4 horas de atendimento ativo. Sem taxas ocultas.",
     },
   ],
 };
@@ -339,14 +360,21 @@ export const faq = {
 export const finalCta = {
   title: "Sua data ainda está livre?",
   subtitle:
-    "Garanta sua reserva com 50% de sinal online — parcele em 3x sem juros no cartão ou pague via Pix. Data bloqueada na hora na nossa agenda, sem burocracia ou filas. Atendemos apenas 1 evento por data para manter a qualidade gourmet exclusiva.",
-  cta: "Reserve sua data agora",
+    "Garanta sua reserva com pagamento online totalmente seguro — parcele em até 6x sem juros no cartão ou pague via Pix. Data bloqueada na hora na nossa agenda, sem burocracia ou filas. Atendemos apenas 1 evento por data para manter a qualidade gourmet exclusiva.",
+  cta: "Reserve seu Evento",
 };
 
 export const footer = {
   tagline: "Estações de açaí e sorvete gourmet para eventos no Rio de Janeiro.",
   group: "Uma marca do grupo MSC Company.",
 };
+
+// Galeria de vídeos — adicione IDs do YouTube aqui quando disponíveis.
+// Formato: { videoId: "ID_DO_YOUTUBE", title: "Título do vídeo" }
+// Exemplo de ID: o URL youtube.com/watch?v=XXXX → videoId é "XXXX"
+export const videoGallery: { videoId: string; title: string }[] = [
+  // { videoId: "SEU_ID_AQUI", title: "Estação de açaí em casamento no RJ" },
+];
 
 export const waDefaultMessage =
   "Olá, Recanto! 🍇 Quero falar com o suporte sobre meu evento.";

@@ -49,6 +49,9 @@ export async function POST(req: Request) {
     body.set("line_items[0][price_data][product_data][images][0]", `${o}/images/produtos/acai-cremoso-colher.jpg`);
     body.set("line_items[0][quantity]", "1");
 
+    // Parcelamento em até 6x sem juros (Brasil)
+    body.set("payment_intent_data[payment_method_options][card][installments][enabled]", "true");
+
     body.set("phone_number_collection[enabled]", "true");
     body.set("metadata[pacote]", pacote);
     body.set("metadata[modo]", modo);

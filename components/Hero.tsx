@@ -18,7 +18,7 @@ export function Hero() {
           <p className="text-muted text-lg mt-6 max-w-md mx-auto md:mx-0 leading-relaxed text-pretty whitespace-pre-line">{hero.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mt-9">
             <a
-              href="#pacotes"
+              href="/reserva"
               className="inline-flex items-center justify-center gap-2 rounded-full font-bold text-lg px-8 py-[1.15rem] bg-gold text-bg hover:bg-gold-soft shadow-gold transition-colors w-full sm:w-auto cta-attention"
             >
               {hero.ctaPrimary}

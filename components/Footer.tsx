@@ -70,7 +70,14 @@ export function Footer() {
               <FacebookIcon className="w-5 h-5" />
             </a>
           </div>
-          <p className="text-muted text-sm mt-4">{site.whatsappDisplay}</p>
+          <a
+            href={`https://wa.me/${site.whatsapp}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="text-muted text-sm mt-4 hover:text-gold transition-colors block"
+          >
+            {site.whatsappDisplay}
+          </a>
         </div>
       </div>
       <div className="mx-auto max-w-6xl px-6 mt-10 pt-6 border-t border-line text-xs text-muted flex flex-col sm:flex-row justify-between gap-2">

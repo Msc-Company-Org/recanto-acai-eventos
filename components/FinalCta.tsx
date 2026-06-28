@@ -12,7 +12,7 @@ export function FinalCta() {
           <p className="text-muted text-lg mt-4 max-w-xl mx-auto">{finalCta.subtitle}</p>
           <div className="mt-8 flex flex-col sm:flex-row gap-3 justify-center">
             <a
-              href="#pacotes"
+              href="/reserva"
               className="inline-flex items-center justify-center gap-2 rounded-full font-bold text-lg px-8 py-4 bg-gold text-bg hover:bg-gold-soft shadow-gold transition-colors w-full sm:w-auto cta-attention"
             >
               {finalCta.cta}

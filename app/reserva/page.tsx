@@ -18,7 +18,7 @@ function ReservaContent() {
   const [extraPremium, setExtraPremium] = useState(0);
   const [extraNormal, setExtraNormal] = useState(0);
 
-  const [selectedPayType, setSelectedPayType] = useState<"sinal" | "total">("sinal");
+  const selectedPayType = "total" as const;
   const [loading, setLoading] = useState(false);
   const [leadId, setLeadId] = useState("");
 
@@ -48,7 +48,6 @@ function ReservaContent() {
   else if (regiao === "niteroi") frete = 250;
 
   const total = precoBase + adicionais + frete;
-  const sinal = total / 2;
   const pName = pacoteId === "combo" ? "Açaí + Sorvete (Combo Duplo)" : "Açaí ou Sorvete (Pacote Único)";
 
   async function handleCheckout(e: React.FormEvent) {
@@ -90,10 +89,10 @@ function ReservaContent() {
 
     // 2. Disparar Analytics
     track(EVENTS.INICIO_CHECKOUT, {
-      value: selectedPayType === "sinal" ? sinal : total,
+      value: total,
       currency: "BRL",
       pacote: pName,
-      tipo_pagamento: selectedPayType,
+      tipo_pagamento: "total",
     });
 
     // 3. Redirecionar para a Stripe com o valor final
@@ -254,7 +253,7 @@ function ReservaContent() {
           <div className="flex items-center gap-3 p-4 bg-[#7c1fd6]/5 rounded-2xl border border-[#7c1fd6]/15">
             <span className="text-2xl">🔒</span>
             <p className="text-[11px] text-[#70548b] leading-relaxed">
-              Utilizamos segurança criptografada de nível bancário para o processamento das transações. Seus dados estão 100% protegidos e sua data garantida de forma imediata na agenda.
+              Pagamento totalmente seguro via Stripe com criptografia de nível bancário. Seus dados estão 100% protegidos e sua data garantida de forma imediata na agenda.
             </p>
           </div>
         </div>
@@ -263,59 +262,28 @@ function ReservaContent() {
         <div className="glass-strong rounded-3xl p-6 sm:p-8 flex flex-col justify-between space-y-6">
           <div>
             <h2 className="font-display text-xl font-bold text-ink">
-              Garantia da Data
+              Valor da Reserva
             </h2>
             <p className="text-xs text-muted mt-1.5">
-              Escolha o formato de pagamento do sinal para travar a data:
+              Pagamento integral online para garantir a sua data na agenda:
             </p>
 
-            <div className="mt-6 space-y-3">
-              {/* Opção A: Pagar Sinal */}
-              <button
-                type="button"
-                onClick={() => setSelectedPayType("sinal")}
-                className={`w-full text-left p-4 rounded-2xl border transition-all ${
-                  selectedPayType === "sinal"
-                    ? "border-[#7c1fd6] bg-[#7c1fd6]/5 shadow-[0_0_0_2px_rgba(124,31,214,0.15)]"
-                    : "border-line bg-white hover:border-[#7c1fd6]/50"
-                }`}
-              >
+            <div className="mt-6">
+              <div className="w-full p-5 rounded-2xl border border-[#7c1fd6] bg-[#7c1fd6]/5 shadow-[0_0_0_2px_rgba(124,31,214,0.15)]">
                 <div className="flex justify-between items-center">
-                  <span className="text-sm font-bold text-ink">Pagar 50% de Sinal</span>
-                  <span className="text-xs font-semibold text-[#7c1fd6] bg-[#7c1fd6]/10 px-2 py-0.5 rounded">Mais escolhido</span>
+                  <span className="text-sm font-bold text-ink">Pagamento Integral</span>
+                  <span className="text-xs font-semibold text-[#7c1fd6] bg-[#7c1fd6]/10 px-2 py-0.5 rounded">Data bloqueada na hora</span>
                 </div>
-                <div className="font-display text-2xl font-bold text-[#7c1fd6] mt-2">
-                  {brl(sinal)}
-                </div>
-                <p className="text-[10px] text-[#7c1fd6] font-bold mt-0.5">
-                  ou 3x de {brl(sinal / 3)} sem juros no cartão
-                </p>
-                <p className="text-[11px] text-muted mt-1 leading-normal">
-                  Pague metade agora para travar a data. O saldo restante (outros 50%) é pago no dia do evento.
-                </p>
-              </button>
-
-              {/* Opção B: Pagar Total */}
-              <button
-                type="button"
-                onClick={() => setSelectedPayType("total")}
-                className={`w-full text-left p-4 rounded-2xl border transition-all ${
-                  selectedPayType === "total"
-                    ? "border-[#7c1fd6] bg-[#7c1fd6]/5 shadow-[0_0_0_2px_rgba(124,31,214,0.15)]"
-                    : "border-line bg-white hover:border-[#7c1fd6]/50"
-                }`}
-              >
-                <span className="text-sm font-bold text-ink">Pagar Valor Total</span>
-                <div className="font-display text-2xl font-bold text-gold mt-2">
+                <div className="font-display text-3xl font-bold text-gold mt-3">
                   {brl(total)}
                 </div>
-                <p className="text-[10px] text-gold font-bold mt-0.5">
-                  ou 3x de {brl(total / 3)} sem juros no cartão
+                <p className="text-[11px] text-gold font-bold mt-0.5">
+                  ou 6x de {brl(total / 6)} sem juros no cartão
                 </p>
-                <p className="text-[11px] text-muted mt-1 leading-normal">
-                  Deixe tudo quitado. Ideal para casamentos e corporativos, sem nenhuma pendência no dia da festa.
+                <p className="text-[11px] text-muted mt-2 leading-normal">
+                  Pagamento totalmente seguro via Pix ou Cartão de Crédito. Sem pendências no dia do evento.
                 </p>
-              </button>
+              </div>
             </div>
           </div>
 
@@ -325,7 +293,7 @@ function ReservaContent() {
               disabled={loading}
               className="w-full rounded-full bg-gold text-bg font-bold py-4 text-base hover:bg-gold-soft shadow-gold transition-colors disabled:opacity-50 cta-attention"
             >
-              {loading ? "Processando..." : `Confirmar Reserva (Pix / Cartão 3x) 💳`}
+              {loading ? "Processando..." : `Confirmar Reserva (Pix / Cartão 6x) 💳`}
             </button>
             <p className="text-center text-[10px] text-muted">
               Cancelamento grátis até 14 dias antes do evento.

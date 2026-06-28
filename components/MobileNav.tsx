@@ -61,11 +61,11 @@ export function MobileNav() {
                 </a>
               ))}
               <a
-                href="#pacotes"
+                href="/reserva"
                 onClick={() => setOpen(false)}
-                className="mt-4 w-full inline-flex items-center justify-center gap-2 rounded-full font-bold py-3 bg-gold text-bg hover:bg-gold-soft shadow-gold transition-colors text-center"
+                className="mt-4 w-full inline-flex items-center justify-center gap-2 rounded-full font-bold py-3 bg-gold text-bg hover:bg-gold-soft shadow-gold transition-colors text-center focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
               >
-                Reservar Online
+                Reserve seu Evento
               </a>
             </nav>
           </div>

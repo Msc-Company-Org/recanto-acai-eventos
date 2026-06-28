@@ -8,9 +8,9 @@ import { SectionTitle } from "@/components/primitives";
 import { ArrowRight } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: "Blog — Recanto do Açaí · Estações",
+  title: "Blog · Dicas para Estação de Açaí em Eventos no RJ | Recanto do Açaí",
   description:
-    "Dicas e ideias para ter uma estação de açaí e sorvete gourmet no seu evento no Rio de Janeiro.",
+    "Guias, preços e dicas para contratar uma estação de açaí e sorvete gourmet para casamentos, festas infantis e eventos no Rio de Janeiro.",
 };
 
 export default function BlogIndex() {

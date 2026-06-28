@@ -20,7 +20,7 @@ export function UrgencySection() {
                 <AlertTriangle className="w-3.5 h-3.5 text-gold shrink-0 animate-bounce" /> Exclusividade Máxima
               </div>
               <h2 className="font-display text-2xl sm:text-3xl font-bold text-ink leading-tight text-pretty">
-                Não deixe para a última hora
+                Datas de fim de semana somem rápido
               </h2>
               <p className="text-sm text-muted leading-relaxed text-pretty">
                 Para manter nosso padrão de qualidade gourmet impecável e garantir que nossa equipe principal esteja presente servindo e coordenando tudo, <strong>atendemos apenas 1 único evento por dia</strong>.
@@ -47,20 +47,20 @@ export function UrgencySection() {
                   </div>
                 </div>
                 <p className="text-xs text-muted leading-normal">
-                  Uma vez bloqueado o dia na agenda por um cliente via sinal, a data é removida do site na hora. Garanta a segurança do seu planejamento.
+                  Uma vez bloqueado o dia na agenda por um cliente, a data é removida do site na hora e fica exclusiva para você. Garanta a segurança do seu planejamento.
                 </p>
               </div>
 
               <div className="pt-2 flex flex-col gap-3">
                 <Link
                   href="/#orcamento"
-                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gold text-bg font-bold text-sm px-6 py-3.5 hover:bg-gold-soft shadow-gold transition-colors w-full cta-attention"
+                  className="inline-flex items-center justify-center gap-2 rounded-full bg-gold text-bg font-bold text-sm px-6 py-3.5 hover:bg-gold-soft shadow-gold transition-colors w-full cta-attention focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-gold focus-visible:ring-offset-2 focus-visible:ring-offset-bg"
                 >
-                  Garantir Meu Evento <ArrowRight className="w-4 h-4" />
+                  Garantir sua Data <ArrowRight className="w-4 h-4" />
                 </Link>
                 <Link
                   href="/#pacotes"
-                  className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 text-ink font-semibold text-xs px-6 py-3 transition-colors w-full"
+                  className="inline-flex items-center justify-center gap-2 rounded-full border border-primary/30 text-ink font-semibold text-xs px-6 py-3 transition-colors w-full focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary"
                 >
                   Ver Pacotes Disponíveis
                 </Link>

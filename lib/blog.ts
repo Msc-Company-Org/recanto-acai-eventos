@@ -1,5 +1,6 @@
 import fs from "node:fs";
 import path from "node:path";
+import type { VideoItem } from "@/components/VideoGallery";
 
 const BLOG_DIR = path.join(process.cwd(), "content", "blog");
 
@@ -15,6 +16,7 @@ export type Post = {
   coverAlt?: string;
   keywords?: string;
   audio?: string;
+  videos?: VideoItem[];
   content: string;
 };
 
@@ -52,6 +54,14 @@ export function getAllPosts(): Post[] {
         coverAlt: data.coverAlt,
         keywords: data.keywords,
         audio: data.audio,
+        videos: data.videos
+          ? data.videos.split(",").map(v => {
+              const pipe = v.indexOf("|");
+              return pipe === -1
+                ? { videoId: v.trim(), title: "Vídeo Recanto do Açaí" }
+                : { videoId: v.slice(0, pipe).trim(), title: v.slice(pipe + 1).trim() };
+            })
+          : undefined,
         content,
       });
     } catch (e) {

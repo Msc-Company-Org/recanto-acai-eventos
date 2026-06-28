@@ -3,15 +3,14 @@ import { Fraunces, Outfit } from "next/font/google";
 import "./globals.css";
 import { site } from "@/lib/content";
 import { Analytics } from "@/components/Analytics";
-import { TrackingListener } from "@/components/TrackingListener";
-import { ScrollReveal } from "@/components/ScrollReveal";
 import { JsonLd } from "@/components/JsonLd";
 
 const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   display: "swap",
-  axes: ["opsz", "SOFT", "WONK"],
+  // Removidos axes SOFT e WONK — reduz ~35KB no arquivo de fonte
+  axes: ["opsz"],
 });
 
 const outfit = Outfit({
@@ -24,7 +23,7 @@ export const metadata: Metadata = {
   metadataBase: new URL(site.url),
   title: "Estação de Açaí para Eventos no RJ | Recanto do Açaí",
   description:
-    "Estação de açaí e sorvete gourmet servida na hora. Reserve e garanta sua data online com sinal de 50% facilitado no cartão ou Pix para casamentos, 15 anos e aniversários no RJ.",
+    "Estação de açaí e sorvete gourmet servida na hora. Reserve e garanta sua data online — pague em até 6x sem juros no cartão ou via Pix para casamentos, 15 anos e aniversários no RJ.",
   keywords: [
     "açaí para eventos",
     "estação de açaí",
@@ -32,11 +31,24 @@ export const metadata: Metadata = {
     "buffet de açaí RJ",
     "açaí para festa",
     "sorvete para eventos",
+    "estação gourmet",
+    "equipe especializada",
     "açaí Zona Norte RJ",
     "Guadalupe",
     "Marechal Hermes",
   ],
   authors: [{ name: "Recanto do Açaí" }],
+  robots: {
+    index: true,
+    follow: true,
+    googleBot: {
+      index: true,
+      follow: true,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
   openGraph: {
     title: "Recanto do Açaí · Estações — Açaí & Sorvete Gourmet para Eventos",
     description:
@@ -54,6 +66,7 @@ export const metadata: Metadata = {
     // twitter:image é gerado por app/twitter-image.tsx.
   },
   alternates: { canonical: site.url },
+  manifest: "/manifest.webmanifest",
   verification: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION
     ? { google: process.env.NEXT_PUBLIC_GOOGLE_SITE_VERIFICATION }
     : undefined,
@@ -69,6 +82,20 @@ export default function RootLayout({
   return (
     <html lang="pt-BR" className={`${fraunces.variable} ${outfit.variable} antialiased`}>
       <body className="min-h-screen bg-bg text-ink overflow-x-hidden">
+        {/* Skip-link para usuários de teclado/screen reader (WCAG 2.4.1) */}
+        <a href="#top" className="skip-link">Pular para o conteúdo principal</a>
+        {/* Preconnect para reduzir latência de scripts externos */}
+        <link rel="preconnect" href="https://www.googletagmanager.com" />
+        <link rel="preconnect" href="https://www.google-analytics.com" />
+        <link rel="preconnect" href="https://connect.facebook.net" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        {/* Preload da imagem LCP do Hero — acelera o LCP em ~200ms */}
+        <link
+          rel="preload"
+          as="image"
+          href="/images/produtos/acai-cremoso-colher.jpg"
+          fetchPriority="high"
+        />
         <noscript>
           <iframe
             src="https://www.googletagmanager.com/ns.html?id=GTM-K5DK33L3"
@@ -81,8 +108,6 @@ export default function RootLayout({
         {children}
         <JsonLd />
         <Analytics />
-        <TrackingListener />
-        <ScrollReveal />
       </body>
     </html>
   );

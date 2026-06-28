@@ -32,6 +32,14 @@ export async function POST(req: Request) {
       source: v.source || undefined,
     });
 
+    const utmNote = [
+      v.utmSource && `utm_source=${v.utmSource}`,
+      v.utmMedium && `utm_medium=${v.utmMedium}`,
+      v.utmCampaign && `utm_campaign=${v.utmCampaign}`,
+      v.utmContent && `utm_content=${v.utmContent}`,
+      v.gclid && `gclid=${v.gclid}`,
+    ].filter(Boolean).join(" | ");
+
     const row = {
       name: v.nome,
       whatsapp: v.whatsapp,
@@ -46,6 +54,7 @@ export async function POST(req: Request) {
       score,
       temperature,
       stage: "novo",
+      notes: utmNote || null,
     };
 
     if (hasDb()) {

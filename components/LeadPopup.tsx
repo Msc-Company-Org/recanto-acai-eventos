@@ -17,10 +17,10 @@ export function LeadPopup() {
     const dismissed = localStorage.getItem("recanto_lead_popup_dismissed");
     if (dismissed === "true") return;
 
-    // 1. Mostrar após 15 segundos
+    // 1. Mostrar após 45 segundos (após o usuário ter tempo de ver os pacotes)
     const timer = setTimeout(() => {
       setShow(true);
-    }, 15000);
+    }, 45000);
 
     // 2. Mostrar em intenção de saída (Mouse saindo do topo da página)
     function handleMouseLeave(e: MouseEvent) {
@@ -65,6 +65,12 @@ export function LeadPopup() {
           tipo,
           source: "site-popup",
         });
+        // Lead qualificado via popup (tem nome + whatsapp + tipo de evento)
+        track(EVENTS.QUALIFY_LEAD, {
+          nome,
+          tipo,
+          source: "site-popup",
+        });
         localStorage.setItem("recanto_lead_popup_dismissed", "true");
         // Fechar após 3 segundos
         setTimeout(() => setShow(false), 3000);
@@ -100,10 +106,10 @@ export function LeadPopup() {
                 <Gift className="w-7 h-7" />
               </div>
               <h3 className="font-display text-2xl font-bold text-[#2a1140] mt-4 leading-tight">
-                Garanta <span className="text-[#7c1fd6]">*1 Sabor Premium Extra*</span> totalmente de graça!
+                Garanta <span className="text-[#7c1fd6]">1 Sabor Premium Extra</span> totalmente de graça!
               </h3>
               <p className="text-sm text-[#70548b] mt-3 leading-relaxed">
-                Temos poucas estações disponíveis para este final de semana. Cadastre-se e trave o seu brinde de R$ 350 antes de fechar a reserva!
+                Sua data ainda aparece como disponível. Deixa seu contato e travamos pra você antes que alguém reserve — e você ainda ganha um sabor premium extra de cortesia!
               </p>
             </div>
 

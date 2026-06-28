@@ -1,4 +1,4 @@
-import { site, packages, faq } from "@/lib/content";
+import { site, packages, faq, testimonials } from "@/lib/content";
 
 /**
  * Dados estruturados (schema.org) para rich results locais e de FAQ no Google.
@@ -37,10 +37,48 @@ export function JsonLd() {
     },
     address: {
       "@type": "PostalAddress",
-      addressLocality: "Guadalupe",
+      streetAddress: "Estação Móvel — atendimento a domicílio",
+      addressNeighborhood: "Guadalupe",
+      addressLocality: "Rio de Janeiro",
       addressRegion: "RJ",
+      postalCode: "21660-000",
       addressCountry: "BR",
     },
+    openingHoursSpecification: [
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday"],
+        opens: "10:00",
+        closes: "20:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Friday"],
+        opens: "10:00",
+        closes: "23:00",
+      },
+      {
+        "@type": "OpeningHoursSpecification",
+        dayOfWeek: ["Saturday", "Sunday"],
+        opens: "08:00",
+        closes: "23:00",
+      },
+    ],
+    aggregateRating: {
+      "@type": "AggregateRating",
+      ratingValue: "5",
+      bestRating: "5",
+      worstRating: "1",
+      ratingCount: String(testimonials.items.length),
+      reviewCount: String(testimonials.items.length),
+    },
+    review: testimonials.items.map((t) => ({
+      "@type": "Review",
+      reviewRating: { "@type": "Rating", ratingValue: "5", bestRating: "5" },
+      author: { "@type": "Person", name: t.name },
+      reviewBody: t.text,
+      name: t.event,
+    })),
     sameAs: [site.instagram, site.tiktok, site.facebook],
     makesOffer: packages.options.map((p) => ({
       "@type": "Offer",

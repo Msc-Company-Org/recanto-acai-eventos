@@ -32,13 +32,13 @@ export const naiaraTools = {
         inclui: p.features,
       })),
       addons: packages.addons.items.map((a) => ({ nome: a.name, preco: brl(a.price) })),
-      reserva: "A data se garante com sinal de 50% (reserva online, na hora).",
+      reserva: "A data se garante com pagamento integral online na hora (Pix ou Cartão em até 6x sem juros). Atendimento de 4 horas.",
     }),
   }),
 
   calcularOrcamento: tool({
     description:
-      "Calcula o total e o sinal de 50% para um pacote, opcionalmente com sabores extras. Use depois que o cliente escolher o pacote.",
+      "Calcula o total para um pacote, opcionalmente com sabores extras. Use depois que o cliente escolher o pacote.",
     inputSchema: z.object({
       pacote: z.enum(["unico", "combo"]).describe("unico = Açaí ou Sorvete; combo = Açaí + Sorvete"),
       saboresExtraPremium: z.number().int().min(0).default(0),

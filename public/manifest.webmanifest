@@ -1,0 +1,37 @@
+{
+  "name": "Recanto do Açaí · Estações Gourmet para Eventos",
+  "short_name": "Recanto Eventos",
+  "description": "Estação de Açaí e Sorvete Gourmet servida na hora para casamentos, 15 anos, festas infantis e eventos corporativos no Rio de Janeiro.",
+  "lang": "pt-BR",
+  "dir": "ltr",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#fdfaff",
+  "theme_color": "#7c1fd6",
+  "categories": ["food", "lifestyle", "events", "business"],
+  "icons": [
+    {
+      "src": "/brand/logo-recanto-acai-icone.jpg",
+      "sizes": "192x192",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    },
+    {
+      "src": "/icon.jpg",
+      "sizes": "512x512",
+      "type": "image/jpeg",
+      "purpose": "any maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/images/produtos/acai-cremoso-colher.jpg",
+      "sizes": "1280x720",
+      "type": "image/jpeg",
+      "form_factor": "wide",
+      "label": "Açaí cremoso gourmet Recanto do Açaí"
+    }
+  ]
+}

@@ -24,6 +24,11 @@ export const LeadSchema = z.object({
   extraNormal: z.coerce.number().int().min(0).max(50).catch(0),
   total: z.coerce.number().min(0).max(10000000).catch(0),
   source: z.string().trim().max(40).catch(""),
+  utmSource: z.string().trim().max(120).catch(""),
+  utmMedium: z.string().trim().max(120).catch(""),
+  utmCampaign: z.string().trim().max(200).catch(""),
+  utmContent: z.string().trim().max(200).catch(""),
+  gclid: z.string().trim().max(200).catch(""),
 });
 export type LeadInput = z.infer<typeof LeadSchema>;
 
