@@ -36,4 +36,6 @@ Por uma diferença de apenas R$ 200, o combo garante o agrado de 100% dos convid
 
 Atendemos a cidade do Rio de Janeiro e região metropolitana. Como o calendário de casamentos costuma ser reservado com bastante antecedência, recomendamos garantir a sua vaga o quanto antes.
 
+> Também atendemos [casamentos em Niterói](/blog/estacao-de-acai-casamento-niteroi) e toda a [Zona Norte do RJ](/blog/estacao-de-acai-zona-norte-rj) — confira os guias completos por região.
+
 > Fale conosco pelo [WhatsApp](https://wa.me/5521981749450) informando a data e o local da sua cerimônia para receber uma proposta personalizada sem compromisso.

@@ -121,7 +121,7 @@ A versatilidade é um dos maiores trunfos da estação. Ela funciona muito bem e
 - **Aniversários infantis e festa de 1 aninho:** sucesso garantido com a criançada (e com os pais). Saiba mais em [estação de açaí para festa infantil](/blog/estacao-de-acai-para-festa-infantil).
 - **Chá revelação:** dá para brincar com as cores dos toppings no clima do "azul ou rosa".
 - **Formaturas:** uma atração descontraída para celebrar a conquista.
-- **Eventos corporativos:** confraternizações, inaugurações e ações internas ganham um diferencial gostoso e democrático.
+- **Eventos corporativos:** confraternizações, inaugurações e ações internas ganham um diferencial gostoso e democrático. Veja o [guia completo para eventos corporativos no RJ](/blog/estacao-de-acai-corporativo-rj).
 - **Festas de rua e de condomínio:** prática, rápida de servir e agrada todas as idades.
 
 Independentemente do tipo de evento, a lógica é a mesma: uma atração que reúne as pessoas em volta de algo gostoso, interativo e memorável.
@@ -243,6 +243,8 @@ Como atendemos **poucos eventos por data** (geralmente um por data, para garanti
 ## Atendemos qual região do Rio
 
 Somos da **Zona Norte do Rio de Janeiro (Guadalupe / Marechal Hermes)** e atendemos a cidade e a região metropolitana. Se você está em dúvida se cobrimos o seu endereço, é só confirmar com a gente antes de fechar — assim você já reserva com tudo certo.
+
+Temos guias específicos por região e tipo de evento: [Zona Norte do RJ](/blog/estacao-de-acai-zona-norte-rj), [casamentos em Niterói](/blog/estacao-de-acai-casamento-niteroi) e [eventos corporativos](/blog/estacao-de-acai-corporativo-rj).
 
 ## A origem do açaí e por que ele conquistou as festas
 

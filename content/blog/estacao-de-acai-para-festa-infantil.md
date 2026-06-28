@@ -35,4 +35,6 @@ Enquanto a decoração e a temática do espaço ficam inteiramente ao seu gosto,
 
 As datas de finais de semana e períodos festivos costumam ter alta procura. Garanta a presença do Recanto no aniversário do seu filho e proporcione uma atração deliciosa para os convidados.
 
+> Também atendemos [festas na Zona Norte do RJ](/blog/estacao-de-acai-zona-norte-rj) e [casamentos e eventos adultos](/blog/estacao-de-acai-para-casamento) — confira os guias por tipo de evento.
+
 > Envie uma mensagem pelo [WhatsApp](https://wa.me/5521981749450) informando a data e o local da festa infantil para receber seu orçamento sob medida.
