@@ -204,8 +204,8 @@ function Bubble({ from, children }: { from: "user" | "assistant"; children: Reac
       <div
         className={
           isUser
-            ? "max-w-[85%] rounded-2xl rounded-br-md bg-[#7c1fd6] px-4 py-2.5 text-xs sm:text-sm leading-relaxed text-white shadow-sm"
-            : "max-w-[85%] rounded-2xl rounded-bl-md border border-[#e9ddf6] bg-white px-4 py-2.5 text-xs sm:text-sm leading-relaxed text-[#2a1140] shadow-sm"
+            ? "max-w-[85%] rounded-2xl rounded-br-md bg-[#7c1fd6] px-4 py-2.5 text-xs sm:text-sm leading-relaxed text-white shadow-sm whitespace-pre-line"
+            : "max-w-[85%] rounded-2xl rounded-bl-md border border-[#e9ddf6] bg-white px-4 py-2.5 text-xs sm:text-sm leading-relaxed text-[#2a1140] shadow-sm whitespace-pre-line"
         }
       >
         {children}
