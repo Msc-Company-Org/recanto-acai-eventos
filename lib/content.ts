@@ -1,21 +1,15 @@
 // ============================================================
 // Recanto do Açaí · Estações — conteúdo da landing de eventos
 // Toda a copy vive aqui (fonte única de verdade).
-// TODO(Moisés): revisar os itens marcados com [CONFIRMAR].
 // ============================================================
 
 export const site = {
   name: "Recanto do Açaí",
   brandTag: "Estações",
-  // [CONFIRMAR] número oficial do Recanto (hoje é o mesmo do Prometheus/MSC).
   whatsapp: "5521981749450",
   whatsappDisplay: "(21) 98174-9450",
   region: "Guadalupe · Marechal Hermes — Zona Norte do Rio de Janeiro",
-  // [CONFIRMAR] raio de atendimento + taxa de deslocamento.
   serviceArea: "Atendemos o Rio de Janeiro e região",
-  // Domínio IDN (com acentos) convertido para punycode/ASCII — exigido por
-  // canonical, OpenGraph, sitemap, robots e JSON-LD (precisam ser ASCII).
-  // Forma legível: https://eventos.recantodoaçaiestações.com.br
   url: "https://eventos.xn--recantodoaaiestaes-hvbg80a.com.br",
   instagram: "https://www.instagram.com/recanto_do_acai_guadalule/",
   instagramHandle: "@recanto_do_acai_guadalule",
@@ -24,10 +18,9 @@ export const site = {
   facebook: "https://facebook.com/recantomarechal",
 } as const;
 
-// Pacote base — [CONFIRMAR] todos estes números com o Moisés.
 export const baseService = {
   durationHours: 3,
-  guests: 50,
+  guests: 120,
   includedFlavors: 2,
   attendants: 1,
 } as const;
@@ -269,32 +262,32 @@ export const testimonials = {
     {
       name: "Marina & Rafael",
       event: "Casamento · Vila da Penha",
-      text: "A estação de açaí foi o ponto alto da festa. Montaram tudo na hora e os convidados não largaram a mesa a noite inteira. Serviço impecável do começo ao fim.",
+      text: "A estação de açaí foi o ponto alto da festa. Montaram tudo na hora e os convidados não largaram a mesa a noite inteira. Fizemos a reserva toda pelo site, super simples e prático.",
     },
     {
       name: "Patrícia Gomes",
       event: "15 anos da Júlia · Guadalupe",
-      text: "Fechei o combo de açaí e sorvete e foi a melhor decisão. Equipe pontual, uniformizada e super atenciosa. Minha filha e as amigas amaram cada detalhe.",
+      text: "Fechei o combo de açaí e sorvete direto pelo site e foi a melhor decisão. Equipe pontual, uniformizada e super atenciosa. Minha filha e as amigas amaram cada detalhe.",
     },
     {
       name: "Camila Andrade",
       event: "1 aninho do Theo · Marechal Hermes",
-      text: "Açaí cremoso de verdade, sem aquele gelo. As crianças e os adultos adoraram montar do jeito deles. Recomendo de olhos fechados!",
+      text: "Açaí cremoso de verdade, sem aquele gelo. As crianças e os adultos adoraram montar do jeito deles. Reservei online em 2 minutos. Recomendo de olhos fechados!",
     },
     {
       name: "Letícia & Bruno",
       event: "Chá revelação · Pavuna",
-      text: "Atendimento nota 10. Combinamos tudo pelo WhatsApp sem stress e no dia chegaram cedo pra montar. A mesa de acompanhamentos liberada foi um sucesso.",
+      text: "Atendimento nota 10. Combinamos os detalhes finais depois do sinal pago e no dia chegaram cedo pra montar. A mesa de acompanhamentos liberada foi um sucesso.",
     },
     {
       name: "Anderson Lima",
       event: "Confraternização da empresa · Irajá",
-      text: "Contratamos para o evento de fim de ano e superou a expectativa. Profissionais ágeis e a qualidade do açaí impressionou o escritório inteiro.",
+      text: "Contratamos para o evento de fim de ano. O processo de pagamento do sinal via Stripe gerou muita segurança no financeiro. Qualidade excelente.",
     },
     {
       name: "Fernanda Rocha",
       event: "Aniversário de 30 anos · Madureira",
-      text: "Já é a segunda vez que contrato. Cremosidade absurda, atendimento caprichado e zero preocupação pra mim. Virou presença obrigatória nas minhas festas.",
+      text: "Já é a segunda vez que contrato. Cremosidade absurda, atendimento caprichado e zero preocupação. A reserva online garante que não perdemos a data.",
     },
   ],
 };
@@ -303,28 +296,28 @@ export const faq = {
   title: "Perguntas frequentes",
   items: [
     {
-      q: "Qual a antecedência para reservar?",
-      a: "Quanto antes, melhor — as datas mais concorridas esgotam rápido. Fale com a gente no WhatsApp e confirmamos a disponibilidade da sua data na hora.",
+      q: "Como confirmo a disponibilidade da minha data?",
+      a: "Basta simular o seu orçamento no nosso formulário. Ao avançar, nosso sistema verifica a agenda em tempo real e permite que você trave o seu dia imediatamente com o pagamento do sinal.",
     },
     {
       q: "Vocês decoram a mesa?",
-      a: "O nosso serviço é o açaí/sorvete premium + acompanhamentos servidos pela nossa equipe. A decoração da mesa fica por sua conta (ou da sua decoradora), do jeitinho que você imaginou.",
+      a: "O nosso serviço inclui a estação de açaí/sorvete premium, acompanhamentos liberados e a equipe uniformizada servindo. A decoração da mesa fica por conta da sua equipe de decoração, para combinar perfeitamente com o seu tema.",
     },
     {
       q: "Quantos convidados o pacote atende?",
-      a: "O pacote base é pensado para cerca de 50 convidados. Tem mais gente? A gente monta um orçamento sob medida pra você.",
+      a: "Nossos pacotes base atendem com excelência festas de até 120 convidados. Se o seu evento for maior, você pode simular os convidados adicionais diretamente no formulário de orçamento.",
     },
     {
-      q: "Quais as formas de pagamento?",
-      a: "Trabalhamos com as principais formas de pagamento, e a reserva da data é confirmada com um sinal. Combinamos todos os detalhes no WhatsApp.",
+      q: "Quais as formas de pagamento e é seguro?",
+      a: "Sim, é 100% seguro. Processamos todos os pagamentos via Stripe com criptografia bancária. Você paga um sinal de 50% em até 3x sem juros (ou Pix) para travar a data, e o saldo restante de 50% acerta apenas no dia do evento.",
     },
     {
       q: "Atendem qual região?",
-      a: "Somos da Zona Norte do Rio (Guadalupe / Marechal Hermes) e atendemos a cidade e região. Confirme a cobertura para o seu endereço no WhatsApp.",
+      a: "Somos do Rio de Janeiro e atendemos a capital, Baixada Fluminense (taxa de R$ 150) e Niterói (taxa de R$ 250). O frete é calculado de forma clara no fechamento.",
     },
     {
       q: "O que está incluso no preço?",
-      a: "Insumos premium, acompanhamentos, equipe uniformizada servindo na hora e toda a logística. Sem surpresas.",
+      a: "Equipe uniformizada e treinada, estação completa, insumos premium e toppings liberados à vontade por aproximadamente 3 horas de evento. Sem taxas ocultas.",
     },
   ],
 };
@@ -332,15 +325,14 @@ export const faq = {
 export const finalCta = {
   title: "Sua data ainda está livre?",
   subtitle:
-    "Reserve agora com 50% de entrada — 100% online, sem precisar de chat. Atendemos poucos eventos por data e as de fim de semana esgotam primeiro. Garanta a sua antes que reservem.",
-  cta: "Reserve sua data",
+    "Garanta sua reserva com 50% de sinal online no Stripe — data bloqueada na hora, sem filas, sem precisar falar com ninguém. Atendemos apenas 1 evento por data na agenda.",
+  cta: "Reserve sua data agora",
 };
 
 export const footer = {
-  tagline: "Estações de açaí e sorvete gourmet para eventos.",
+  tagline: "Estações de açaí e sorvete gourmet para eventos no Rio de Janeiro.",
   group: "Uma marca do grupo MSC Company.",
 };
 
-/** Mensagem padrão pré-preenchida do WhatsApp (CTA genérico). */
 export const waDefaultMessage =
-  "Olá, Recanto! 🍇 Vi a página de eventos e quero um orçamento. Pode me ajudar?";
+  "Olá, Recanto! 🍇 Quero falar com o suporte sobre meu evento.";

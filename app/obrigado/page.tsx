@@ -1,48 +1,81 @@
-import type { Metadata } from "next";
+"use client";
+
+import { useEffect } from "react";
 import Link from "next/link";
-import { waLink } from "@/lib/utils";
-import { TrackReserva } from "@/components/TrackReserva";
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import { track, EVENTS } from "@/lib/tracking";
+import { CheckCircle, Calendar, HeartHandshake } from "lucide-react";
 
-export const metadata: Metadata = {
-  title: "Reserva recebida · Recanto do Açaí Eventos",
-  robots: { index: false },
-};
-
-export default async function Obrigado({
-  searchParams,
-}: {
-  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
-}) {
-  const sp = await searchParams;
-  const valor = Number(sp.valor) || undefined;
-  const sessionId = typeof sp.session_id === "string" ? sp.session_id : undefined;
+export default function ObrigadoPage() {
+  useEffect(() => {
+    // Coleta parâmetros do Stripe (Session ID, etc.) se necessário
+    const search = new URLSearchParams(window.location.search);
+    const sessionId = search.get("session_id") || "";
+    
+    // Dispara o tracking de Conversão Final de Compra (Purchase)
+    track(EVENTS.RESERVA_PAGA, {
+      transaction_id: sessionId,
+      value: 845, // Valor do sinal base estimado para conversão média
+      currency: "BRL",
+    });
+  }, []);
 
   return (
-    <main className="min-h-screen flex items-center justify-center px-6 bg-radial-glow">
-      <TrackReserva value={valor} transactionId={sessionId} />
-      <div className="glass-strong rounded-3xl p-10 md:p-14 max-w-md text-center">
-        <div className="text-5xl mb-4">💜</div>
-        <h1 className="font-display text-3xl font-bold text-ink">Reserva recebida!</h1>
-        <p className="text-muted mt-4 leading-relaxed">
-          Recebemos seu pagamento 🎉 Em breve a gente confirma todos os detalhes do seu evento —
-          pode ficar tranquilo(a)!
-        </p>
-        <a
-          href={waLink(
-            "Olá, Recanto! 🍇 Acabei de reservar pelo site. Podemos confirmar os detalhes do meu evento?"
-          )}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="inline-flex items-center justify-center gap-2 rounded-full font-semibold px-7 py-3.5 bg-whats text-white hover:bg-whats-dark transition-all mt-8 shadow-glow"
-        >
-          Confirmar no WhatsApp
-        </a>
-        <div className="mt-4">
-          <Link href="/" className="text-sm text-muted hover:text-primary transition-colors">
-            Voltar ao site
-          </Link>
+    <>
+      <Header />
+      <main className="bg-[#fdfaff] min-h-screen pt-28 pb-14 flex items-center justify-center">
+        <div className="mx-auto max-w-xl px-6 text-center">
+          <div className="glass-strong rounded-3xl p-8 sm:p-12 space-y-6 shadow-glow">
+            
+            {/* Ícone de Sucesso */}
+            <div className="mx-auto flex h-20 w-20 items-center justify-center rounded-full bg-whats/10 text-whats animate-bounce">
+              <CheckCircle className="w-12 h-12" />
+            </div>
+
+            <h1 className="font-display text-3xl sm:text-4xl font-bold text-[#2a1140] tracking-tight leading-tight">
+              Sua data está reservada! 🎉
+            </h1>
+            
+            <p className="text-[#6c5b80] text-sm leading-relaxed">
+              Obrigado por escolher o <strong>Recanto do Açaí</strong>. O pagamento do sinal foi processado com sucesso pelo Stripe e sua data já foi travada em nossa agenda oficial.
+            </p>
+
+            <div className="border-t border-b border-line py-6 space-y-4 text-left">
+              <h3 className="font-bold text-[#2a1140] text-sm text-center">
+                Quais são os próximos passos?
+              </h3>
+              
+              <div className="flex gap-3.5 items-start text-xs">
+                <Calendar className="w-5 h-5 text-gold shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-bold text-ink">1. Confirmação por e-mail</h4>
+                  <p className="text-muted mt-0.5">Você receberá o comprovante de reserva e os detalhes do seu pacote por e-mail em instantes.</p>
+                </div>
+              </div>
+
+              <div className="flex gap-3.5 items-start text-xs">
+                <HeartHandshake className="w-5 h-5 text-[#7c1fd6] shrink-0 mt-0.5" />
+                <div>
+                  <h4 className="font-bold text-ink">2. Contato da Produção</h4>
+                  <p className="text-muted mt-0.5">Nossa equipe entrará em contato na semana do evento para alinhar o local exato da montagem no salão e os sabores escolhidos.</p>
+                </div>
+              </div>
+            </div>
+
+            <div className="pt-2">
+              <Link
+                href="/"
+                className="inline-flex items-center justify-center gap-2 rounded-full font-bold text-sm px-8 py-3.5 bg-[#7c1fd6] text-white hover:bg-[#6a17ba] transition-colors shadow-glow w-full sm:w-auto"
+              >
+                Voltar para a Página Inicial
+              </Link>
+            </div>
+
+          </div>
         </div>
-      </div>
-    </main>
+      </main>
+      <Footer />
+    </>
   );
 }

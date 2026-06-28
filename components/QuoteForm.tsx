@@ -60,22 +60,50 @@ export function QuoteForm() {
     return linhas.join("\n");
   }, [form, pkg, total]);
 
-  function handleSubmit(e: React.FormEvent) {
+  async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
-    // Conversão principal (Lead) — value/currency p/ otimização de campanha.
+    if (!form.nome.trim() || !form.whatsapp.trim()) {
+      alert("Por favor, preencha seu nome e WhatsApp.");
+      return;
+    }
+
+    // Conversão principal (Lead)
     track(EVENTS.ENVIO_FORMULARIO, {
       value: total,
       currency: "BRL",
       tipo: form.tipo,
       pacote: pkg.name,
     });
-    // Registro best-effort — não bloqueia o WhatsApp (lead principal vai pelo wa.me).
-    fetch("/api/lead", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ ...form, pacoteNome: pkg.name, total }),
-    }).catch(() => {});
-    window.open(waLink(message), "_blank", "noopener,noreferrer");
+
+    try {
+      // Salvar lead localmente antes de avançar
+      const res = await fetch("/api/lead", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ...form, pacoteNome: pkg.name, total }),
+      });
+      const dataRes = await res.json();
+      
+      const queryParams = new URLSearchParams({
+        nome: form.nome,
+        whatsapp: form.whatsapp,
+        data: form.data,
+        tipo: form.tipo,
+        convidados: form.convidados,
+        pacote: form.pacote,
+        extraPremium: String(form.extraPremium),
+        extraNormal: String(form.extraNormal),
+        total: String(total),
+        leadId: dataRes.id || "",
+      });
+
+      // Redireciona para a página de Agendamento e Pagamento
+      window.location.href = `/reserva?${queryParams.toString()}`;
+    } catch (err) {
+      console.error(err);
+      alert("Ocorreu um erro ao processar. Vamos redirecionar para a página de reserva.");
+      window.location.href = `/reserva`;
+    }
   }
 
   return (
@@ -86,13 +114,14 @@ export function QuoteForm() {
             Monte seu orçamento
           </h2>
           <p className="text-muted text-center mt-2">
-            Preencha em 30 segundos e mande direto pro nosso WhatsApp.
+            Simule em tempo real e avance para garantir seu dia na agenda.
           </p>
 
           <form onSubmit={handleSubmit} className="mt-8 space-y-5">
             <div className="grid sm:grid-cols-2 gap-4">
               <Field label="Seu nome">
                 <input
+                  required
                   className={inputCls}
                   value={form.nome}
                   onChange={(e) => set("nome", e.target.value)}
@@ -101,6 +130,7 @@ export function QuoteForm() {
               </Field>
               <Field label="Seu WhatsApp">
                 <input
+                  required
                   className={inputCls}
                   value={form.whatsapp}
                   onChange={(e) => set("whatsapp", e.target.value)}
@@ -110,6 +140,7 @@ export function QuoteForm() {
               </Field>
               <Field label="Data do evento">
                 <input
+                  required
                   type="date"
                   className={inputCls}
                   value={form.data}
@@ -118,6 +149,7 @@ export function QuoteForm() {
               </Field>
               <Field label="Convidados (aprox.)">
                 <input
+                  required
                   type="number"
                   min={1}
                   className={inputCls}
@@ -191,9 +223,9 @@ export function QuoteForm() {
 
             <button
               type="submit"
-              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-whats text-white font-semibold px-7 py-4 hover:bg-whats-dark transition-all shadow-glow"
+              className="w-full inline-flex items-center justify-center gap-2 rounded-full bg-gold text-bg font-bold px-7 py-4 hover:bg-gold-soft transition-all shadow-glow cta-attention"
             >
-              <WhatsappIcon /> Reservar data no WhatsApp
+              Avançar para Agendamento e Pagamento 💳
             </button>
           </form>
         </div>

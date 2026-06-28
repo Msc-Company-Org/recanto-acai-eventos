@@ -60,14 +60,13 @@ export function MobileNav() {
                   {n.label}
                 </a>
               ))}
-              <WhatsAppCTA
-                message={waDefaultMessage}
-                variant="primary"
-                cta="mobile-menu"
-                className="mt-4 w-full"
+              <a
+                href="#pacotes"
+                onClick={() => setOpen(false)}
+                className="mt-4 w-full inline-flex items-center justify-center gap-2 rounded-full font-bold py-3 bg-gold text-bg hover:bg-gold-soft shadow-gold transition-colors text-center"
               >
-                <WhatsappIcon className="w-4 h-4" /> Falar no WhatsApp
-              </WhatsAppCTA>
+                Reservar Online
+              </a>
             </nav>
           </div>
         </>

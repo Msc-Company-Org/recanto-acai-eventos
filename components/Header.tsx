@@ -32,11 +32,12 @@ export function Header() {
           ))}
         </nav>
         <div className="flex items-center gap-1.5 shrink-0">
-          <WhatsAppCTA message={waDefaultMessage} variant="primary" cta="header" className="!px-4 !py-2.5 text-sm">
-            <WhatsappIcon className="w-4 h-4" />
-            <span className="hidden sm:inline">Falar conosco</span>
-            <span className="sm:hidden">WhatsApp</span>
-          </WhatsAppCTA>
+          <a
+            href="#pacotes"
+            className="inline-flex items-center justify-center gap-2 rounded-full font-bold text-sm px-5 py-2.5 bg-gold text-bg hover:bg-gold-soft shadow-gold transition-colors"
+          >
+            Reservar Online
+          </a>
           <MobileNav />
         </div>
       </div>
