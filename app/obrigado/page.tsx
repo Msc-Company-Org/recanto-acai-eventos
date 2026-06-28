@@ -9,14 +9,13 @@ import { CheckCircle, Calendar, HeartHandshake } from "lucide-react";
 
 export default function ObrigadoPage() {
   useEffect(() => {
-    // Coleta parâmetros do Stripe (Session ID, etc.) se necessário
     const search = new URLSearchParams(window.location.search);
     const sessionId = search.get("session_id") || "";
-    
-    // Dispara o tracking de Conversão Final de Compra (Purchase)
+    const valor = parseFloat(search.get("valor") || "0") || undefined;
+
     track(EVENTS.RESERVA_PAGA, {
       transaction_id: sessionId,
-      value: 845, // Valor do sinal base estimado para conversão média
+      value: valor,
       currency: "BRL",
     });
   }, []);
@@ -38,7 +37,7 @@ export default function ObrigadoPage() {
             </h1>
             
             <p className="text-[#6c5b80] text-sm leading-relaxed">
-              Obrigado por escolher o <strong>Recanto do Açaí</strong>. O pagamento do sinal foi processado com sucesso pelo Stripe e sua data já foi travada em nossa agenda oficial.
+              Obrigado por escolher o <strong>Recanto do Açaí</strong>. O pagamento foi processado com sucesso pelo Stripe e sua data já foi travada em nossa agenda oficial.
             </p>
 
             <div className="border-t border-b border-line py-6 space-y-4 text-left">
@@ -58,7 +57,7 @@ export default function ObrigadoPage() {
                 <HeartHandshake className="w-5 h-5 text-[#7c1fd6] shrink-0 mt-0.5" />
                 <div>
                   <h4 className="font-bold text-ink">2. Contato da Produção</h4>
-                  <p className="text-muted mt-0.5">Nossa equipe entrará em contato na semana do evento para alinhar o local exato da montagem no salão e os sabores escolhidos.</p>
+                  <p className="text-muted mt-0.5">Nossa equipe entrará em contato para confirmar todos os detalhes: local exato de montagem no salão, sabores e logística do dia.</p>
                 </div>
               </div>
             </div>

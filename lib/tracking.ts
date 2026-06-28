@@ -52,13 +52,13 @@ const GA4_NAME: Record<string, string> = {
 };
 
 // ─── Valor fixo de cada conversão (R$) — enviado junto com o evento ───
+// RESERVA_PAGA não tem valor fixo: usa params.value (valor real da compra via Stripe).
 const CONVERSION_VALUE: Record<string, number> = {
   [EVENTS.SELECAO_PACOTE]: 5,
   [EVENTS.ENVIO_FORMULARIO]: 10,
   [EVENTS.QUALIFY_LEAD]: 20,
   [EVENTS.CLOSE_CONVERT_LEAD]: 25,
   [EVENTS.INICIO_CHECKOUT]: 35,
-  [EVENTS.RESERVA_PAGA]: 50,
 };
 
 // ─── Meta Pixel ───
@@ -134,7 +134,7 @@ export function track(event: string, params: Record<string, unknown> = {}): void
     if (event === EVENTS.RESERVA_PAGA && isFirstTime) {
       window.gtag("event", "conversion", {
         send_to: ADS_PURCHASE_LABEL,
-        value: convValue,
+        value: params.value ?? convValue,
         currency: "BRL",
         transaction_id: txId,
       });
