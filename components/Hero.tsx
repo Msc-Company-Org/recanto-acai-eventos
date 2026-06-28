@@ -15,7 +15,7 @@ export function Hero() {
             {hero.titleLead}{" "}
             <span className="text-gold-gradient">{hero.titleHighlight}</span>.
           </h1>
-          <p className="text-muted text-lg mt-6 max-w-md mx-auto md:mx-0 leading-relaxed text-pretty">{hero.subtitle}</p>
+          <p className="text-muted text-lg mt-6 max-w-md mx-auto md:mx-0 leading-relaxed text-pretty whitespace-pre-line">{hero.subtitle}</p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center md:justify-start mt-9">
             <a
               href="#pacotes"

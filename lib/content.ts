@@ -36,14 +36,14 @@ export const nav = [
 ];
 
 export const hero = {
-  badge: "Casamentos · 15 Anos · Festas Infantis · Confraternizações",
-  titleLead: "Estação Gourmet de Açaí & Sorvete para seu Evento no RJ",
-  titleHighlight: "100% Online",
+  badge: "Casamentos · 15 Anos · Festas Infantis · Corporativos",
+  titleLead: "Torne seu Evento",
+  titleHighlight: "Inesquecível!",
   subtitle:
-    "Açaí e sorvete gourmet artesanais servidos na hora pela nossa equipe com toppings liberados à vontade. Simule seu preço e garanta a exclusividade da sua data a partir de 3x sem juros no cartão ou Pix.",
-  ctaPrimary: "Reserve sua data agora",
+    "Estação de Açaí e Sorvete Completa para dar um toque ainda mais Especial ao seu evento.\n\nSelecione a data e simule o valor para o seu número de convidados direto no calendário abaixo.",
+  ctaPrimary: "Garantir minha data",
   ctaSecondary: "Simular orçamento",
-  ctaNote: "Confirmação imediata · apenas 1 equipe própria por data para qualidade máxima 🔒",
+  ctaNote: "Garantia de atendimento exclusivo: apenas 1 evento próprio atendido por dia 🔒",
   stats: [
     { value: "Na hora", label: "Servido fresquinho" },
     { value: "À vontade", label: "15+ Toppings" },
