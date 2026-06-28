@@ -20,7 +20,21 @@ export function JsonLd() {
     image: `${site.url}/images/estacao/estacao-atendente-salao.jpg`,
     priceRange: "R$1.490–R$1.690",
     servesCuisine: ["Açaí", "Sorvete"],
-    areaServed: { "@type": "City", name: "Rio de Janeiro" },
+    areaServed: [
+      { "@type": "City", name: "Rio de Janeiro" },
+      { "@type": "AdministrativeArea", name: "Zona Norte RJ" },
+      { "@type": "AdministrativeArea", name: "Guadalupe" },
+      { "@type": "AdministrativeArea", name: "Marechal Hermes" },
+      { "@type": "AdministrativeArea", name: "Barra da Tijuca" },
+      { "@type": "AdministrativeArea", name: "Recreio dos Bandeirantes" },
+      { "@type": "AdministrativeArea", name: "Zona Sul RJ" },
+      { "@type": "AdministrativeArea", name: "Niterói" },
+    ],
+    geo: {
+      "@type": "GeoCoordinates",
+      latitude: -22.8364,
+      longitude: -43.3664,
+    },
     address: {
       "@type": "PostalAddress",
       addressLocality: "Guadalupe",
